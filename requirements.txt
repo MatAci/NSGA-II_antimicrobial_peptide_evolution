@@ -2,5 +2,6 @@ requests
 beautifulsoup4
 pandas
 urllib3
-numpy
 openpyxl
+numpy==1.23.5
+matplotlib==3.6.3
