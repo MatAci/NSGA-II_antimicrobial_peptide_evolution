@@ -53,7 +53,7 @@ GA = NSGA_II(
     upperRange=19,
     population_size=70,
     offspring_size=20,
-    num_generations=30,
+    num_generations=6,
     num_solutions_tournament=5,
     mutation_probability=0.3,
     penalty_function_reducer=0.7
@@ -61,8 +61,13 @@ GA = NSGA_II(
 
 pareto_fronts = GA.calculate()
 
+for solution in pareto_fronts[0]:
+    print(solution)
+
 visualize_pareto_fronts(pareto_fronts)
 hyperarea = calculate_hyperarea(pareto_fronts[0])
+
+print(f"Hyperarea for current parameters: {hyperarea}")
 
 # Get the zeroth Pareto front
 zero_pareto_front = pareto_fronts[0]
@@ -73,7 +78,3 @@ with open('front.txt', 'w') as file:
         peptide_string = solution.peptide_string
         file.write(f'>{peptide_string}\n{peptide_string}\n')
 
-print(f"Hyperarea for current parameters: {hyperarea}")
-
-for solution in pareto_fronts[0]:
-    print(solution)
