@@ -1,0 +1,5 @@
+(['V', 'H', 'K', 'P', 'R', 'H', 'Q', 'C', 'R', 'G', 'S', 'I'], 'VHKPRHQCRGSI', 0.85, 1.17)
+(['E', 'R', 'F', 'A', 'I', 'F', 'I', 'Y', 'H', 'S', 'Y', 'I', 'L', 'H', 'K', 'R', 'I', 'E'], 'ERFAIFIYHSYILHKRIE', 0.35, 2.24)
+(['E', 'R', 'F', 'A', 'I', 'F', 'Q', 'C', 'R', 'G', 'S', 'I'], 'ERFAIFQCRGSI', 0.83, 1.52)
+(['E', 'R', 'F', 'A', 'I', 'F', 'I', 'Y', 'H', 'S', 'Y', 'I', 'L', 'H', 'K', 'R', 'T', 'R'], 'ERFAIFIYHSYILHKRTR', 0.8, 1.84)
+(['K', 'A', 'F', 'A', 'I', 'F', 'I', 'Y', 'H', 'S', 'Y', 'I', 'L', 'H', 'K', 'R', 'I', 'E'], 'KAFAIFIYHSYILHKRIE', 0.61, 2.0)

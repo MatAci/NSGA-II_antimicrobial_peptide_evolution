@@ -1,6 +1,8 @@
 import ast
 
-with open('NSGA-II_antimicrobial_peptide_evolution\sequenceFiles\Doabr.txt', 'r') as file:
+# This file converts data from FinalResults.txt to FASTA so further data can be explored
+
+with open('/home/mataci/Desktop/NSGA-II_antimicrobial_peptide_evolution/sequenceFiles/FinalResults.txt', 'r') as file:
     lines = file.readlines()
 
 with open('format.txt', 'w') as file:

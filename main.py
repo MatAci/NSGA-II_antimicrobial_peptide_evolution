@@ -53,7 +53,7 @@ GA = NSGA_II(
     upperRange=19,
     population_size=70,
     offspring_size=20,
-    num_generations=6,
+    num_generations=2,
     num_solutions_tournament=5,
     mutation_probability=0.3,
     penalty_function_reducer=0.7
@@ -64,6 +64,10 @@ pareto_fronts = GA.calculate()
 for solution in pareto_fronts[0]:
     print(solution)
 
+with open('/home/mataci/Desktop/NSGA-II_antimicrobial_peptide_evolution/sequenceFiles/FinalResults.txt', 'w') as file:
+    for solution in pareto_fronts[0]:
+        file.write(str(solution) + '\n')
+
 visualize_pareto_fronts(pareto_fronts)
 hyperarea = calculate_hyperarea(pareto_fronts[0])
 
@@ -73,8 +77,8 @@ print(f"Hyperarea for current parameters: {hyperarea}")
 zero_pareto_front = pareto_fronts[0]
 
 # Write the sequences to front.txt in FASTA format
-with open('front.txt', 'w') as file:
-    for solution in zero_pareto_front:
-        peptide_string = solution.peptide_string
-        file.write(f'>{peptide_string}\n{peptide_string}\n')
+# with open('front.txt', 'w') as file:
+#   for solution in zero_pareto_front:
+#        peptide_string = solution.peptide_string
+#        file.write(f'>{peptide_string}\n{peptide_string}\n')
 
