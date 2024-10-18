@@ -72,13 +72,3 @@ visualize_pareto_fronts(pareto_fronts)
 hyperarea = calculate_hyperarea(pareto_fronts[0])
 
 print(f"Hyperarea for current parameters: {hyperarea}")
-
-# Get the zeroth Pareto front
-zero_pareto_front = pareto_fronts[0]
-
-# Write the sequences to front.txt in FASTA format
-# with open('front.txt', 'w') as file:
-#   for solution in zero_pareto_front:
-#        peptide_string = solution.peptide_string
-#        file.write(f'>{peptide_string}\n{peptide_string}\n')
-
