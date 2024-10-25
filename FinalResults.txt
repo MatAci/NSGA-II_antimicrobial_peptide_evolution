@@ -1,8 +1,0 @@
-(['M', 'S', 'H', 'K', 'C', 'F', 'L', 'I', 'W', 'Q', 'L', 'I'], 'MSHKCFLIWQLI', 0.59, 1.29)
-(['S', 'I', 'Q', 'Q', 'S', 'H', 'I', 'H', 'K', 'Q'], 'SIQQSHIHKQ', 0.52, 1.59)
-(['V', 'R', 'A', 'R', 'K', 'I', 'C', 'P', 'L', 'T', 'Q', 'V', 'H', 'M', 'P'], 'VRARKICPLTQVHMP', 0.53, 1.56)
-(['G', 'L', 'H', 'F', 'R', 'F', 'Q', 'K', 'L'], 'GLHFRFQKL', 0.92, 1.14)
-(['W', 'W', 'H', 'F', 'R', 'F', 'Q', 'K', 'L', 'Y'], 'WWHFRFQKLY', 0.72, 1.28)
-(['P', 'C', 'V', 'P', 'F', 'T', 'P', 'R', 'I', 'Q', 'D', 'L', 'I'], 'PCVPFTPRIQDLI', 0.33, 1.8)
-(['S', 'I', 'Q', 'Q', 'M', 'T', 'W', 'M', 'R', 'T', 'T', 'H', 'G'], 'SIQQMTWMRTTHG', 0.13, 1.94)
-(['G', 'S', 'H', 'K', 'C', 'F', 'L', 'I', 'W', 'Q', 'L', 'I'], 'GSHKCFLIWQLI', 0.84, 1.23)

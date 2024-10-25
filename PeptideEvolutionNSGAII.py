@@ -5,6 +5,7 @@ import RandomGenerator
 import FitnessFunctionScraper
 import os
 import Mutations
+import FetchAMPProbability
 
 class NSGA_II:
 
@@ -160,17 +161,19 @@ class NSGA_II:
                 -------
                 List of self.Peptide objects.
                 """
+        #[['Q', 'C'], ['Y', 'E', 'W']]
         peptides = RandomGenerator.generate_random_peptides(lowerRange, upperRange, population_size)
 
         list_of_peptide_objects = []
-
+        
         with open('in.txt', 'w') as file:
             for peptide in peptides:
                 peptide_string = ''.join(peptide)
                 file.write(f'>{peptide_string}\n{peptide_string}\n')
 
-
-        peptide_and_ff_amp_probability = FitnessFunctionScraper.scrape_fitness_function()
+        #peptide_and_ff_amp_probability = FitnessFunctionScraper.scrape_fitness_function()
+        
+        peptide_and_ff_amp_probability = FetchAMPProbability.fetchAMPProbability(peptides)
         toxicity = FitnessFunctionScraper.toxicity()
         
         if os.path.exists('in.txt'):
@@ -377,15 +380,17 @@ class NSGA_II:
                 file.write(f'>{peptide_string}\n{peptide_string}\n')
 
 
-        peptide_and_ff_amp_probability = FitnessFunctionScraper.scrape_fitness_function()
+        #peptide_and_ff_amp_probability = FitnessFunctionScraper.scrape_fitness_function()
+
+        peptide_and_ff_amp_probability = FetchAMPProbability.fetchAMPProbability(offspring)
         toxicity = FitnessFunctionScraper.toxicity()
         
         if os.path.exists('in.txt'):
             os.remove('in.txt')
 
         for (peptide_string, ff_amp_probability), (peptide_id, svm_score, prediction) in zip(peptide_and_ff_amp_probability, toxicity):
-            print("Peptide: ", peptide_string)
-            print("Toxicity: ", svm_score, prediction)
+            #print("Peptide: ", peptide_string)
+            #print("Toxicity: ", svm_score, prediction)
             offspring_peptides.append(self.Peptide(list(peptide_string), peptide_string, float(ff_amp_probability), float(svm_score)))
 
         return offspring_peptides

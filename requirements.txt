@@ -5,3 +5,5 @@ urllib3
 openpyxl
 numpy==1.23.5
 matplotlib==3.6.3
+biopython
+
