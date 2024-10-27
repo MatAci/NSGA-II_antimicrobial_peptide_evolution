@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import numpy as np
+import PenaltyFunction
 import RandomGenerator
 import FitnessFunctionScraper
 import os
@@ -25,6 +26,8 @@ class NSGA_II:
                            The possibility that antimicrobial peptide have antimicrobial properties.
                        ff_toxicity : float
                            The SVM score of toxicity of the peptide.
+                        average_similarity : float
+                            Average similarity relative to entire population
 
                        """
 
@@ -32,6 +35,7 @@ class NSGA_II:
             self.peptide_string = peptide_string
             self.ff_amp_probability = ff_amp_probability
             self.ff_toxicity = ff_toxicity
+            self.average_similarity = 0
 
             # When a solution is created, set its rank and crowding distance
             # to initial values.
@@ -199,6 +203,7 @@ class NSGA_II:
             E.g., [[Peptide#1, Peptide#2, ...], ...]
         """
     
+        """   
         # Create a dictionary to store the count of each peptide.
         peptide_counts = {}
         for peptide in population:
@@ -215,7 +220,9 @@ class NSGA_II:
             if count > 1:
                 penalty = peptide.ff_amp_probability * self.penalty_function_reducer  # Adjust the penalty factor as needed.
                 peptide.ff_amp_probability -= penalty
-    
+        """
+        PenaltyFunction.applyPenaltyFactor(population,self.penalty_function_reducer)
+
         # list_of_dominated_indices[n] will store indices of solutions
         # population[n] dominates over.
         list_of_dominated_indices = [[] for _ in population]
