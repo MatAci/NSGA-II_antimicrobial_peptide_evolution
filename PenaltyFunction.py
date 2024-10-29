@@ -40,7 +40,7 @@ def applyPenaltyFactor(population,penalty_function_reducer):
         target_obj.average_similarity = average_similarity
     
     # We use 75% percentile beacuse it uses data instead of just positions
-    threshold_percentile = np.percentile(global_similarities, 75)
+    threshold_percentile = np.percentile(global_similarities, 67)
     print(threshold_percentile)
     for peptide in population:
         if peptide.average_similarity > threshold_percentile:

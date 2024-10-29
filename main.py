@@ -55,10 +55,10 @@ GA = NSGA_II(
     upperRange=19,
     population_size=70,
     offspring_size=20,
-    num_generations=10,
+    num_generations=30,
     num_solutions_tournament=5,
     mutation_probability=0.3,
-    penalty_function_reducer=0.7
+    penalty_function_reducer=0.15
 )
 
 pareto_fronts = GA.calculate()

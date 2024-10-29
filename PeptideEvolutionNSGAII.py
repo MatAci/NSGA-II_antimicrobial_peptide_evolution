@@ -223,6 +223,23 @@ class NSGA_II:
         """
         PenaltyFunction.applyPenaltyFactor(population,self.penalty_function_reducer)
 
+        # Create a dictionary to store the count of each peptide.
+        peptide_counts = {}
+        for peptide in population:
+            peptide_string = peptide.peptide_string
+            if peptide_string in peptide_counts:
+                peptide_counts[peptide_string] += 1
+            else:
+                peptide_counts[peptide_string] = 1
+    
+        # Add a penalty to the fitness function value of peptides that occur more than once.
+        for peptide in population:
+            peptide_string = peptide.peptide_string
+            count = peptide_counts[peptide_string]
+            if count > 1:
+                penalty = peptide.ff_amp_probability * 0.7 # Adjust the penalty factor as needed.
+                peptide.ff_amp_probability -= penalty
+
         # list_of_dominated_indices[n] will store indices of solutions
         # population[n] dominates over.
         list_of_dominated_indices = [[] for _ in population]
