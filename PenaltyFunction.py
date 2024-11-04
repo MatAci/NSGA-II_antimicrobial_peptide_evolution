@@ -58,7 +58,6 @@ def applyPenaltyFactor(population, penalty_function_reducer):
             penalty = peptide.ff_amp_probability * penalty_function_reducer  
             peptide.ff_amp_probability -= penalty
           
-            print(f"Sequence: {peptide.peptide_string}, Average Similarity Score: {peptide.average_similarity:.2f}% - Penalty")
-        else:
-            print(f"Sequence: {peptide.peptide_string}, Average Similarity Score: {peptide.average_similarity:.2f}% - No Penalty")
-
+            # print(f"Sequence: {peptide.peptide_string}, Average Similarity Score: {peptide.average_similarity:.2f}% - Penalty")
+        #else:
+            # print(f"Sequence: {peptide.peptide_string}, Average Similarity Score: {peptide.average_similarity:.2f}% - No Penalty")
