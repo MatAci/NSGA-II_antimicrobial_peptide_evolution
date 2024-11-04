@@ -5,6 +5,7 @@ import PenaltyFunction
 import RandomGenerator
 import FitnessFunctionScraper
 import os
+import time
 import Mutations
 import FetchAMPProbability
 
@@ -221,7 +222,16 @@ class NSGA_II:
                 penalty = peptide.ff_amp_probability * self.penalty_function_reducer  # Adjust the penalty factor as needed.
                 peptide.ff_amp_probability -= penalty
         """
-        PenaltyFunction.applyPenaltyFactor(population,self.penalty_function_reducer)
+
+        # Početak mjerenja vremena prije poziva funkcije
+        start_time = time.time()
+
+        # Poziv funkcije
+        PenaltyFunction.applyPenaltyFactor(population, self.penalty_function_reducer)
+
+        # Kraj mjerenja vremena i ispis rezultata
+        end_time = time.time()
+        print(f"Vrijeme izvršavanja: {end_time - start_time:.2f} sekundi")
 
         # Create a dictionary to store the count of each peptide.
         peptide_counts = {}
