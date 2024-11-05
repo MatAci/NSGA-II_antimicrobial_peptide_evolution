@@ -47,7 +47,6 @@ class NSGA_II:
             self.rank = -1
             self.distance = 0
 
-
     def __init__(self,
                  lowerRange,
                  upperRange,
@@ -78,6 +77,10 @@ class NSGA_II:
             The probability of a mutation occurring.
         penalty_function_reducer : float
             Number which is used for reducing AMP probability if sequences are the same.
+        similarity_threshold_values : List
+            Penalty threshold collected through generations for graph plotting
+        start_time: float
+            Timer for testing purposes
         """
 
         self.lowerRange = lowerRange
@@ -88,6 +91,8 @@ class NSGA_II:
         self.num_solutions_tournament = num_solutions_tournament
         self.mutation_probability = mutation_probability
         self.penalty_function_reducer = penalty_function_reducer
+        self.similarity_threshold_values = []
+        self.start_time = time.time()
 
 
     def calculate(self):
@@ -104,7 +109,6 @@ class NSGA_II:
              Peptide string,
              Value of fitness function that represent possibility of peptide having AMP properties).
         """
-
         generation_number = 1
         population = self.generate_random_population(self.lowerRange, self.upperRange, self.population_size)
 
@@ -176,10 +180,12 @@ class NSGA_II:
                 peptide_string = ''.join(peptide)
                 file.write(f'>{peptide_string}\n{peptide_string}\n')
 
-        #peptide_and_ff_amp_probability = FitnessFunctionScraper.scrape_fitness_function()
-        
+        # self.time_lapse("Unutar generate_random_population prije računanja AMP-a")
+        # peptide_and_ff_amp_probability = FitnessFunctionScraper.scrape_fitness_function()
         peptide_and_ff_amp_probability = FetchAMPProbability.fetchAMPProbability(peptides)
+        # self.time_lapse("Unutar generate_random_population nakon AMP Prije toxictiy")
         toxicity = FitnessFunctionScraper.toxicity()
+        # self.time_lapse("Unutar generate_random_population nakon toxicity")
         
         if os.path.exists('in.txt'):
             os.remove('in.txt')
@@ -223,15 +229,12 @@ class NSGA_II:
                 peptide.ff_amp_probability -= penalty
         """
 
-        # Početak mjerenja vremena prije poziva funkcije
-        start_time = time.time()
+        # self.time_lapse("Unutar perform_non_dominated_sort prije penalty-a")
 
         # Poziv funkcije
-        PenaltyFunction.applyPenaltyFactor(population, self.penalty_function_reducer)
+        self.similarity_threshold_values = PenaltyFunction.applyPenaltyFactor(population, self.penalty_function_reducer)
 
-        # Kraj mjerenja vremena i ispis rezultata
-        end_time = time.time()
-        print(f"Vrijeme izvršavanja: {end_time - start_time:.2f} sekundi")
+        # self.time_lapse("Unutar perform_non_dominated_sort nakon penatly-a")
 
         # Create a dictionary to store the count of each peptide.
         peptide_counts = {}
@@ -336,7 +339,7 @@ class NSGA_II:
             for index in pareto_front:
                 current_front.append(population[index])
             object_pareto_fronts.append(current_front)
-    
+
         return object_pareto_fronts
 
 
@@ -414,10 +417,12 @@ class NSGA_II:
                 file.write(f'>{peptide_string}\n{peptide_string}\n')
 
 
-        #peptide_and_ff_amp_probability = FitnessFunctionScraper.scrape_fitness_function()
-
+        # self.time_lapse("Unutar generate_offspring prije računanja AMP-a")
+        # peptide_and_ff_amp_probability = FitnessFunctionScraper.scrape_fitness_function()
         peptide_and_ff_amp_probability = FetchAMPProbability.fetchAMPProbability(offspring)
+        # self.time_lapse("Unutar generate_offspring nakon računanja AMP-a prije toxicity-a")
         toxicity = FitnessFunctionScraper.toxicity()
+        # self.time_lapse("Unutar generate_offspring nakon toxicity")
         
         if os.path.exists('in.txt'):
             os.remove('in.txt')
@@ -551,3 +556,11 @@ class NSGA_II:
                 break
 
         return next_generation
+    
+    def time_lapse(self,checkpoint_name="Checkpoint"):
+ 
+        current_time = time.time() - self.start_time
+        time_text = f"{current_time:.2f} sekundi - {checkpoint_name}\n"
+        # Zapisujemo vreme u datoteku
+        with open("time.txt", "a") as fajl:
+            fajl.write(time_text)

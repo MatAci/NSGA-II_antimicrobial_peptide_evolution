@@ -1,6 +1,7 @@
 from Bio import pairwise2
 import numpy as np
 
+similarity_threshold_values = []
 
 def applyPenaltyFactor(population, penalty_function_reducer):
     global_similarities = [] 
@@ -51,7 +52,7 @@ def applyPenaltyFactor(population, penalty_function_reducer):
 
     # We use 67% percentile beacuse it uses data instead of just positions
     threshold_percentile = np.percentile(global_similarities, 67)
-    print(threshold_percentile)
+    similarity_threshold_values.append(threshold_percentile)
     for peptide in population:
         if peptide.average_similarity > threshold_percentile:
             # Adjust the penalty factor as needed for positive values
@@ -61,3 +62,5 @@ def applyPenaltyFactor(population, penalty_function_reducer):
             # print(f"Sequence: {peptide.peptide_string}, Average Similarity Score: {peptide.average_similarity:.2f}% - Penalty")
         #else:
             # print(f"Sequence: {peptide.peptide_string}, Average Similarity Score: {peptide.average_similarity:.2f}% - No Penalty")
+
+    return similarity_threshold_values

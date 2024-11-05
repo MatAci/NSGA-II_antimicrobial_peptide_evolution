@@ -1,0 +1,108 @@
+SA OTOVICEVIM MODELOM
+0.58 sekundi - Unutar generate_random_population prije računanja AMP-a
+7.78 sekundi - Unutar generate_random_population nakon AMP Prije toxictiy
+32.59 sekundi - Unutar generate_random_population nakon toxicity
+32.59 sekundi - Unutar perform_non_dominated_sort prije penalty-a
+46.94 sekundi - Unutar perform_non_dominated_sort nakon penatly-a
+46.95 sekundi - Unutar generate_offspring prije računanja AMP-a
+53.53 sekundi - Unutar generate_offspring nakon računanja AMP-a
+61.85 sekundi - Unutar generate_offspring nakon toxicity
+61.85 sekundi - Unutar perform_non_dominated_sort prije penalty-a
+85.31 sekundi - Unutar perform_non_dominated_sort nakon penatly-a
+85.33 sekundi - Unutar generate_offspring prije računanja AMP-a
+91.88 sekundi - Unutar generate_offspring nakon računanja AMP-a
+99.95 sekundi - Unutar generate_offspring nakon toxicity
+99.95 sekundi - Unutar perform_non_dominated_sort prije penalty-a
+123.42 sekundi - Unutar perform_non_dominated_sort nakon penatly-a
+123.44 sekundi - Unutar generate_offspring prije računanja AMP-a
+130.01 sekundi - Unutar generate_offspring nakon računanja AMP-a
+138.05 sekundi - Unutar generate_offspring nakon toxicity
+138.05 sekundi - Unutar perform_non_dominated_sort prije penalty-a
+161.03 sekundi - Unutar perform_non_dominated_sort nakon penatly-a
+161.05 sekundi - Unutar generate_offspring prije računanja AMP-a
+167.63 sekundi - Unutar generate_offspring nakon računanja AMP-a
+177.16 sekundi - Unutar generate_offspring nakon toxicity
+177.16 sekundi - Unutar perform_non_dominated_sort prije penalty-a
+200.65 sekundi - Unutar perform_non_dominated_sort nakon penatly-a
+200.67 sekundi - Unutar generate_offspring prije računanja AMP-a
+207.30 sekundi - Unutar generate_offspring nakon računanja AMP-a
+215.46 sekundi - Unutar generate_offspring nakon toxicity
+215.47 sekundi - Unutar perform_non_dominated_sort prije penalty-a
+238.72 sekundi - Unutar perform_non_dominated_sort nakon penatly-a
+238.74 sekundi - Unutar generate_offspring prije računanja AMP-a
+245.25 sekundi - Unutar generate_offspring nakon računanja AMP-a
+253.35 sekundi - Unutar generate_offspring nakon toxicity
+253.35 sekundi - Unutar perform_non_dominated_sort prije penalty-a
+275.54 sekundi - Unutar perform_non_dominated_sort nakon penatly-a
+275.56 sekundi - Unutar generate_offspring prije računanja AMP-a
+282.10 sekundi - Unutar generate_offspring nakon računanja AMP-a
+290.11 sekundi - Unutar generate_offspring nakon toxicity
+290.11 sekundi - Unutar perform_non_dominated_sort prije penalty-a
+312.42 sekundi - Unutar perform_non_dominated_sort nakon penatly-a
+312.45 sekundi - Unutar generate_offspring prije računanja AMP-a
+318.94 sekundi - Unutar generate_offspring nakon računanja AMP-a
+SA WEB SCRAPENJEM
+0.52 sekundi - Unutar generate_random_population prije računanja AMP-a
+2.67 sekundi - Unutar generate_random_population nakon AMP Prije toxictiy
+27.43 sekundi - Unutar generate_random_population nakon toxicity
+27.43 sekundi - Unutar perform_non_dominated_sort prije penalty-a
+41.97 sekundi - Unutar perform_non_dominated_sort nakon penatly-a
+41.99 sekundi - Unutar generate_offspring prije računanja AMP-a
+43.80 sekundi - Unutar generate_offspring nakon računanja AMP-a prije toxicity-a
+51.79 sekundi - Unutar generate_offspring nakon toxicity
+51.79 sekundi - Unutar perform_non_dominated_sort prije penalty-a
+75.50 sekundi - Unutar perform_non_dominated_sort nakon penatly-a
+75.52 sekundi - Unutar generate_offspring prije računanja AMP-a
+77.59 sekundi - Unutar generate_offspring nakon računanja AMP-a prije toxicity-a
+85.78 sekundi - Unutar generate_offspring nakon toxicity
+85.78 sekundi - Unutar perform_non_dominated_sort prije penalty-a
+109.31 sekundi - Unutar perform_non_dominated_sort nakon penatly-a
+109.33 sekundi - Unutar generate_offspring prije računanja AMP-a
+111.07 sekundi - Unutar generate_offspring nakon računanja AMP-a prije toxicity-a
+119.06 sekundi - Unutar generate_offspring nakon toxicity
+119.06 sekundi - Unutar perform_non_dominated_sort prije penalty-a
+142.70 sekundi - Unutar perform_non_dominated_sort nakon penatly-a
+142.72 sekundi - Unutar generate_offspring prije računanja AMP-a
+144.66 sekundi - Unutar generate_offspring nakon računanja AMP-a prije toxicity-a
+152.65 sekundi - Unutar generate_offspring nakon toxicity
+152.65 sekundi - Unutar perform_non_dominated_sort prije penalty-a
+175.12 sekundi - Unutar perform_non_dominated_sort nakon penatly-a
+175.15 sekundi - Unutar generate_offspring prije računanja AMP-a
+177.01 sekundi - Unutar generate_offspring nakon računanja AMP-a prije toxicity-a
+185.01 sekundi - Unutar generate_offspring nakon toxicity
+185.01 sekundi - Unutar perform_non_dominated_sort prije penalty-a
+207.16 sekundi - Unutar perform_non_dominated_sort nakon penatly-a
+207.18 sekundi - Unutar generate_offspring prije računanja AMP-a
+209.34 sekundi - Unutar generate_offspring nakon računanja AMP-a prije toxicity-a
+218.80 sekundi - Unutar generate_offspring nakon toxicity
+218.80 sekundi - Unutar perform_non_dominated_sort prije penalty-a
+240.39 sekundi - Unutar perform_non_dominated_sort nakon penatly-a
+240.41 sekundi - Unutar generate_offspring prije računanja AMP-a
+242.14 sekundi - Unutar generate_offspring nakon računanja AMP-a prije toxicity-a
+250.03 sekundi - Unutar generate_offspring nakon toxicity
+250.03 sekundi - Unutar perform_non_dominated_sort prije penalty-a
+270.40 sekundi - Unutar perform_non_dominated_sort nakon penatly-a
+270.42 sekundi - Unutar generate_offspring prije računanja AMP-a
+272.46 sekundi - Unutar generate_offspring nakon računanja AMP-a prije toxicity-a
+280.44 sekundi - Unutar generate_offspring nakon toxicity
+280.44 sekundi - Unutar perform_non_dominated_sort prije penalty-a
+300.36 sekundi - Unutar perform_non_dominated_sort nakon penatly-a
+300.38 sekundi - Unutar generate_offspring prije računanja AMP-a
+302.15 sekundi - Unutar generate_offspring nakon računanja AMP-a prije toxicity-a
+310.25 sekundi - Unutar generate_offspring nakon toxicity
+310.25 sekundi - Unutar perform_non_dominated_sort prije penalty-a
+330.11 sekundi - Unutar perform_non_dominated_sort nakon penatly-a
+330.14 sekundi - Unutar generate_offspring prije računanja AMP-a
+331.95 sekundi - Unutar generate_offspring nakon računanja AMP-a prije toxicity-a
+339.84 sekundi - Unutar generate_offspring nakon toxicity
+339.84 sekundi - Unutar perform_non_dominated_sort prije penalty-a
+359.26 sekundi - Unutar perform_non_dominated_sort nakon penatly-a
+359.29 sekundi - Unutar generate_offspring prije računanja AMP-a
+361.24 sekundi - Unutar generate_offspring nakon računanja AMP-a prije toxicity-a
+369.43 sekundi - Unutar generate_offspring nakon toxicity
+369.43 sekundi - Unutar perform_non_dominated_sort prije penalty-a
+389.24 sekundi - Unutar perform_non_dominated_sort nakon penatly-a
+389.26 sekundi - Unutar generate_offspring prije računanja AMP-a
+390.93 sekundi - Unutar generate_offspring nakon računanja AMP-a prije toxicity-a
+399.03 sekundi - Unutar generate_offspring nakon toxicity
+399.03 sekundi - Unutar perform_non_dominated_sort prije penalty-a
