@@ -1,4 +1,4 @@
-SA OTOVICEVIM MODELOM
+TRENUTNI MODEL BEZ WEB SCRAPEA
 0.58 sekundi - Unutar generate_random_population prije računanja AMP-a
 7.78 sekundi - Unutar generate_random_population nakon AMP Prije toxictiy
 32.59 sekundi - Unutar generate_random_population nakon toxicity
@@ -41,7 +41,7 @@ SA OTOVICEVIM MODELOM
 312.42 sekundi - Unutar perform_non_dominated_sort nakon penatly-a
 312.45 sekundi - Unutar generate_offspring prije računanja AMP-a
 318.94 sekundi - Unutar generate_offspring nakon računanja AMP-a
-SA WEB SCRAPENJEM
+MODEL SA WEB SCRAPEOM
 0.52 sekundi - Unutar generate_random_population prije računanja AMP-a
 2.67 sekundi - Unutar generate_random_population nakon AMP Prije toxictiy
 27.43 sekundi - Unutar generate_random_population nakon toxicity

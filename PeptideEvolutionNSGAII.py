@@ -539,7 +539,6 @@ class NSGA_II:
         List of self.Peptide objects.
             E.g., [Peptide#1, Peptide#2, ...]
         """
-
         next_generation = []
 
         for pareto_front in non_dominated_sorted_population:
@@ -556,6 +555,28 @@ class NSGA_II:
                 break
 
         return next_generation
+        """
+        # rezanje za sada maknuto
+        next_generation = []
+
+        for pareto_front in non_dominated_sorted_population:
+            # Filter out peptides with AMP probability < 0.2 or negative toxicity
+            pareto_front = [pep for pep in pareto_front if pep.ff_amp_probability >= 0.2 and pep.ff_toxicity >= -1.0]
+
+            if len(pareto_front) + len(next_generation) <= self.population_size:
+                # If the whole pareto front fits into next generation, add it.
+                next_generation.extend(pareto_front)
+            elif self.population_size - len(next_generation) > 0:
+                # Otherwise, add the individuals with the highest crowding distance
+                # to preserve genetic diversity.
+                pareto_front.sort(key=lambda solution: solution.distance)
+                next_generation.extend(
+                    pareto_front[-(self.population_size-len(next_generation)):]
+                )
+                break
+
+        return next_generation
+        """
     
     def time_lapse(self,checkpoint_name="Checkpoint"):
  

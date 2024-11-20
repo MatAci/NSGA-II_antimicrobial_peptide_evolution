@@ -37,4 +37,11 @@ with open('/home/mataci/Desktop/NSGA-II_antimicrobial_peptide_evolution/sequence
 
 VisualizeData.visualize_pareto_fronts(pareto_fronts)
 VisualizeData.visualize_convex_hull(pareto_fronts[0])
-VisualizeData.visulize_threshold_through_generations(GA.similarity_threshold_values)
+similarity_threshold_values,similarity_min_values,similarity_max_values,similarity_mean_values = GA.similarity_threshold_values
+VisualizeData.visulize_threshold_through_generations(similarity_threshold_values)
+VisualizeData.visulize_threshold_through_generations(similarity_min_values)
+VisualizeData.visulize_threshold_through_generations(similarity_max_values)
+VisualizeData.visulize_threshold_through_generations(similarity_mean_values)
+
+print(similarity_min_values)
+print(similarity_max_values)

@@ -26,22 +26,32 @@ def visualize_pareto_fronts(pareto_fronts):
     plt.show()
 
 def visualize_convex_hull(pareto_front):
-    # Points extraction (ff_toxicity, ff_amp_probability) from zero pareto_front
+    # Extract (ff_toxicity, ff_amp_probability) from the zero pareto_front
     points = [(pep[3], pep[2]) for pep in pareto_front]
 
     # Separate x and y values for easier handling
     x = np.array([point[0] for point in points])
     y = np.array([point[1] for point in points])
 
-    # Determine the rightmost x value and use it as the upper-right boundary point
-    x_max = x.max()
-    x_hull = np.array([0, *x, x_max])
-    y_hull = np.array([1, *y, 0])
+    # Filter points where x > 0 (i.e., to the right of the y-axis)
+    filtered_points = [(x_val, y_val) for x_val, y_val in zip(x, y) if x_val > 0]
+    
+    if len(filtered_points) < 3:
+        print("Not enough points to form a convex hull on the positive x-axis.")
+        return
 
-    # Sort points by x-values to ensure correct ordering for the hull
-    sorted_indices = np.argsort(x_hull)
-    x_hull = x_hull[sorted_indices]
-    y_hull = y_hull[sorted_indices]
+    # Separate the filtered points into x and y values
+    filtered_x = np.array([point[0] for point in filtered_points])
+    filtered_y = np.array([point[1] for point in filtered_points])
+
+    # Sort points by x-values
+    sorted_indices = np.argsort(filtered_x)
+    filtered_x = filtered_x[sorted_indices]
+    filtered_y = filtered_y[sorted_indices]
+
+    # Add the origin (0, 0) to the left side of the hull for better visualization
+    x_hull = np.array([0, *filtered_x])
+    y_hull = np.array([1, *filtered_y])
 
     # Calculate area under the upper hull using the trapezoid method
     area = trapezoid(y_hull, x_hull)
@@ -51,15 +61,16 @@ def visualize_convex_hull(pareto_front):
         file.write(f"Hyperarea for convex hull: {area}\n")
     
     # Plot the results showing the upper hull boundary and filled area beneath it
-    plt.plot(x_hull, y_hull, marker='o', linestyle='-')
+    plt.plot(x_hull, y_hull, marker='o', linestyle='-', color='blue')
     plt.fill_between(x_hull, y_hull, color='lightblue', alpha=0.5)
-    plt.title("Convex hull krivulja")
+    plt.title("Convex Hull Krivulja")
     plt.xlabel("Toksičnost (ff_toxicity)")
     plt.ylabel("Vjerojatnost postojanja AMP svojstva (ff_amp_probability)")
-    plt.xlim(0, x_max)
+    plt.xlim(0, filtered_x.max())
     plt.ylim(0, 1)
-    plt.grid()
+    plt.grid(True)
     plt.show()
+
 
 def calculate_hyperarea(pareto_front):
     # Sort the points by x value
