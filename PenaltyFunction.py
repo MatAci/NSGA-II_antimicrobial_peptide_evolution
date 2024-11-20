@@ -6,7 +6,7 @@ similarity_min_values = []
 similarity_max_values = []
 similarity_mean_values = []
 
-
+"""
 def applyPenaltyFactor(population, penalty_function_reducer):
     global_similarities = [] 
     similarity_cache = {} 
@@ -73,10 +73,10 @@ def applyPenaltyFactor(population, penalty_function_reducer):
     
     return similarity_threshold_values,similarity_min_values,similarity_max_values,similarity_mean_values
 
-
 """
 
-def calculate_penalty(similarities, min_sim, max_sim, penalty_factor_reducer, p=3.25):
+
+def calculate_penalty(similarities, min_sim, max_sim, penalty_factor_reducer, p=2.5):
     #Izračunava kazne prema kvadratnoj funkciji
     penalties = []
     for sim in similarities:
@@ -153,4 +153,3 @@ def applyPenaltyFactor(population, penalty_function_reducer):
     similarity_mean_values.append(np.mean(global_similarities))
     
     return similarity_threshold_values, similarity_min_values, similarity_max_values, similarity_mean_values
-"""
