@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+#add two numbers
+
 import numpy as np
 import PenaltyFunction
 import RandomGenerator
@@ -217,30 +219,11 @@ class NSGA_II:
         List of lists of self.Peptide objects.
             E.g., [[Peptide#1, Peptide#2, ...], ...]
         """
-    
-        """   
-        # Create a dictionary to store the count of each peptide.
-        peptide_counts = {}
-        for peptide in population:
-            peptide_string = peptide.peptide_string
-            if peptide_string in peptide_counts:
-                peptide_counts[peptide_string] += 1
-            else:
-                peptide_counts[peptide_string] = 1
-    
-        # Add a penalty to the fitness function value of peptides that occur more than once.
-        for peptide in population:
-            peptide_string = peptide.peptide_string
-            count = peptide_counts[peptide_string]
-            if count > 1:
-                penalty = peptide.ff_amp_probability * self.penalty_function_reducer  # Adjust the penalty factor as needed.
-                peptide.ff_amp_probability -= penalty
-        """
 
         if flag == True:
             self.similarity_threshold_values = PenaltyFunction.applyPenaltyFactor(population, self.penalty_function_reducer)
 
-
+        
         # Create a dictionary to store the count and flag of each peptide.
         peptide_counts = {}
         for peptide in population:
@@ -276,7 +259,7 @@ class NSGA_II:
                     else:
                         penalty_toxicity = peptide.ff_toxicity * 0.8
                         peptide.ff_toxicity += penalty_toxicity  # Make negative toxicity more negative
-
+        
 
 
 
