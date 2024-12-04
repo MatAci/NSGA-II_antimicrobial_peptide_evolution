@@ -1,0 +1,189 @@
+Podsekvenca: IY
+  Ponavljanja u algoritmima:
+    Algoritam 1: 15 puta
+    Algoritam 5: 13 puta
+  Sadržava u:
+    Algoritam: Algoritam 5, Sekvenca: IY
+    Algoritam: Algoritam 5, Sekvenca: IYW
+    Algoritam: Algoritam 5, Sekvenca: RIY
+    Algoritam: Algoritam 5, Sekvenca: IYWH
+    Algoritam: Algoritam 5, Sekvenca: IYWHK
+    Algoritam: Algoritam 1, Sekvenca: IY
+    Algoritam: Algoritam 1, Sekvenca: WGKIY
+
+Podsekvenca: HK
+  Ponavljanja u algoritmima:
+    Algoritam 1: 15 puta
+    Algoritam 2: 12 puta
+    Algoritam 4: 11 puta
+  Sadržava u:
+    Algoritam: Algoritam 2, Sekvenca: HK
+    Algoritam: Algoritam 2, Sekvenca: HHK
+    Algoritam: Algoritam 4, Sekvenca: HK
+    Algoritam: Algoritam 4, Sekvenca: WHK
+    Algoritam: Algoritam 4, Sekvenca: HKL
+    Algoritam: Algoritam 4, Sekvenca: HKE
+    Algoritam: Algoritam 4, Sekvenca: NWHK
+    Algoritam: Algoritam 4, Sekvenca: WHKE
+    Algoritam: Algoritam 4, Sekvenca: NWHKE
+    Algoritam: Algoritam 4, Sekvenca: WHKER
+    Algoritam: Algoritam 5, Sekvenca: YWHK
+    Algoritam: Algoritam 5, Sekvenca: IYWHK
+    Algoritam: Algoritam 5, Sekvenca: YWHKW
+    Algoritam: Algoritam 1, Sekvenca: HK
+    Algoritam: Algoritam 1, Sekvenca: HKE
+    Algoritam: Algoritam 4, Sekvenca: HK
+    Algoritam: Algoritam 4, Sekvenca: WHK
+    Algoritam: Algoritam 4, Sekvenca: HKL
+    Algoritam: Algoritam 4, Sekvenca: HKE
+    Algoritam: Algoritam 4, Sekvenca: NWHK
+    Algoritam: Algoritam 4, Sekvenca: WHKE
+    Algoritam: Algoritam 4, Sekvenca: NWHKE
+    Algoritam: Algoritam 4, Sekvenca: WHKER
+    Algoritam: Algoritam 5, Sekvenca: YWHK
+    Algoritam: Algoritam 5, Sekvenca: IYWHK
+    Algoritam: Algoritam 5, Sekvenca: YWHKW
+    Algoritam: Algoritam 1, Sekvenca: HK
+    Algoritam: Algoritam 1, Sekvenca: HKE
+    Algoritam: Algoritam 2, Sekvenca: HK
+    Algoritam: Algoritam 2, Sekvenca: HHK
+    Algoritam: Algoritam 5, Sekvenca: YWHK
+    Algoritam: Algoritam 5, Sekvenca: IYWHK
+    Algoritam: Algoritam 5, Sekvenca: YWHKW
+
+Podsekvenca: KE
+  Ponavljanja u algoritmima:
+    Algoritam 1: 14 puta
+  Sadržava u:
+    Algoritam: Algoritam 4, Sekvenca: HKE
+    Algoritam: Algoritam 4, Sekvenca: WHKE
+    Algoritam: Algoritam 4, Sekvenca: NWHKE
+    Algoritam: Algoritam 4, Sekvenca: WHKER
+
+Podsekvenca: ER
+  Ponavljanja u algoritmima:
+    Algoritam 1: 13 puta
+    Algoritam 2: 10 puta
+    Algoritam 4: 7 puta
+  Sadržava u:
+    Algoritam: Algoritam 2, Sekvenca: ER
+    Algoritam: Algoritam 2, Sekvenca: ERT
+    Algoritam: Algoritam 2, Sekvenca: ERTL
+    Algoritam: Algoritam 4, Sekvenca: ER
+    Algoritam: Algoritam 4, Sekvenca: WHKER
+    Algoritam: Algoritam 1, Sekvenca: ER
+    Algoritam: Algoritam 1, Sekvenca: FER
+    Algoritam: Algoritam 1, Sekvenca: PFER
+    Algoritam: Algoritam 1, Sekvenca: FERM
+    Algoritam: Algoritam 1, Sekvenca: KPFER
+    Algoritam: Algoritam 1, Sekvenca: PFERM
+    Algoritam: Algoritam 4, Sekvenca: ER
+    Algoritam: Algoritam 4, Sekvenca: WHKER
+    Algoritam: Algoritam 1, Sekvenca: ER
+    Algoritam: Algoritam 1, Sekvenca: FER
+    Algoritam: Algoritam 1, Sekvenca: PFER
+    Algoritam: Algoritam 1, Sekvenca: FERM
+    Algoritam: Algoritam 1, Sekvenca: KPFER
+    Algoritam: Algoritam 1, Sekvenca: PFERM
+    Algoritam: Algoritam 2, Sekvenca: ER
+    Algoritam: Algoritam 2, Sekvenca: ERT
+    Algoritam: Algoritam 2, Sekvenca: ERTL
+
+Podsekvenca: TK
+  Ponavljanja u algoritmima:
+    Algoritam 1: 13 puta
+    Algoritam 3: 13 puta
+  Sadržava u:
+    Algoritam: Algoritam 2, Sekvenca: FMTK
+    Algoritam: Algoritam 2, Sekvenca: GFMTK
+    Algoritam: Algoritam 2, Sekvenca: FMTKV
+    Algoritam: Algoritam 3, Sekvenca: TK
+    Algoritam: Algoritam 3, Sekvenca: TKP
+    Algoritam: Algoritam 3, Sekvenca: ATKI
+    Algoritam: Algoritam 3, Sekvenca: WGVTK
+    Algoritam: Algoritam 3, Sekvenca: WHATK
+    Algoritam: Algoritam 1, Sekvenca: TK
+    Algoritam: Algoritam 1, Sekvenca: TKP
+    Algoritam: Algoritam 1, Sekvenca: TKPF
+    Algoritam: Algoritam 1, Sekvenca: TKPFE
+    Algoritam: Algoritam 2, Sekvenca: FMTK
+    Algoritam: Algoritam 2, Sekvenca: GFMTK
+    Algoritam: Algoritam 2, Sekvenca: FMTKV
+
+Podsekvenca: HKE
+  Ponavljanja u algoritmima:
+    Algoritam 1: 14 puta
+    Algoritam 4: 5 puta
+  Sadržava u:
+    Algoritam: Algoritam 4, Sekvenca: HKE
+    Algoritam: Algoritam 4, Sekvenca: WHKE
+    Algoritam: Algoritam 4, Sekvenca: NWHKE
+    Algoritam: Algoritam 4, Sekvenca: WHKER
+    Algoritam: Algoritam 1, Sekvenca: HKE
+
+Podsekvenca: TKP
+  Ponavljanja u algoritmima:
+    Algoritam 1: 13 puta
+    Algoritam 3: 6 puta
+  Sadržava u:
+    Algoritam: Algoritam 3, Sekvenca: TKP
+    Algoritam: Algoritam 1, Sekvenca: TKP
+    Algoritam: Algoritam 1, Sekvenca: TKPF
+    Algoritam: Algoritam 1, Sekvenca: TKPFE
+
+Podsekvenca: KP
+  Ponavljanja u algoritmima:
+    Algoritam 3: 10 puta
+  Sadržava u:
+    Algoritam: Algoritam 1, Sekvenca: TKP
+    Algoritam: Algoritam 1, Sekvenca: KPF
+    Algoritam: Algoritam 1, Sekvenca: TKPF
+    Algoritam: Algoritam 1, Sekvenca: KPFE
+    Algoritam: Algoritam 1, Sekvenca: TKPFE
+    Algoritam: Algoritam 1, Sekvenca: KPFER
+
+Podsekvenca: KI
+  Ponavljanja u algoritmima:
+    Algoritam 3: 10 puta
+  Sadržava u:
+    Algoritam: Algoritam 1, Sekvenca: WGKI
+    Algoritam: Algoritam 1, Sekvenca: WGKIY
+    Algoritam: Algoritam 1, Sekvenca: MWGKI
+
+Podsekvenca: WH
+  Ponavljanja u algoritmima:
+    Algoritam 4: 9 puta
+  Sadržava u:
+    Algoritam: Algoritam 3, Sekvenca: NWHA
+    Algoritam: Algoritam 3, Sekvenca: NWHAT
+    Algoritam: Algoritam 3, Sekvenca: WHATK
+    Algoritam: Algoritam 5, Sekvenca: YWH
+    Algoritam: Algoritam 5, Sekvenca: IYWH
+    Algoritam: Algoritam 5, Sekvenca: YWHK
+    Algoritam: Algoritam 5, Sekvenca: IYWHK
+    Algoritam: Algoritam 5, Sekvenca: YWHKW
+
+Podsekvenca: RI
+  Ponavljanja u algoritmima:
+    Algoritam 4: 8 puta
+    Algoritam 5: 15 puta
+  Sadržava u:
+    Algoritam: Algoritam 5, Sekvenca: RI
+    Algoritam: Algoritam 5, Sekvenca: RIY
+    Algoritam: Algoritam 4, Sekvenca: RI
+
+Podsekvenca: WHK
+  Ponavljanja u algoritmima:
+    Algoritam 4: 6 puta
+  Sadržava u:
+    Algoritam: Algoritam 5, Sekvenca: YWHK
+    Algoritam: Algoritam 5, Sekvenca: IYWHK
+    Algoritam: Algoritam 5, Sekvenca: YWHKW
+
+Podsekvenca: NWH
+  Ponavljanja u algoritmima:
+    Algoritam 4: 5 puta
+  Sadržava u:
+    Algoritam: Algoritam 3, Sekvenca: NWHA
+    Algoritam: Algoritam 3, Sekvenca: NWHAT
+

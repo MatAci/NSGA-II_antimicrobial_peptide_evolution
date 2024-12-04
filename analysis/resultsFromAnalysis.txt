@@ -1,0 +1,147 @@
+Najčešće 2-znakovne sekvence:
+IY: 15
+HK: 15
+KE: 14
+ER: 13
+TK: 13
+
+Najčešće 3-znakovne sekvence:
+HKE: 14
+TKP: 13
+KPF: 13
+FER: 12
+WGK: 11
+
+Najčešće 4-znakovne sekvence:
+TKPF: 13
+KPFE: 11
+PFER: 11
+FERM: 10
+WGKI: 9
+
+Najčešće 5-znakovne sekvence:
+TKPFE: 11
+KPFER: 11
+WGKIY: 9
+PFERM: 9
+MWGKI: 7
+
+---
+
+Najčešće 2-znakovne sekvence:
+HH: 25
+HK: 12
+YL: 11
+ER: 10
+IH: 9
+
+Najčešće 3-znakovne sekvence:
+IHH: 9
+HHH: 9
+HHK: 8
+ERT: 8
+RTL: 8
+
+Najčešće 4-znakovne sekvence:
+ERTL: 8
+SIHH: 6
+AGFM: 6
+GFMT: 6
+FMTK: 6
+
+Najčešće 5-znakovne sekvence:
+AGFMT: 6
+GFMTK: 6
+VSSIH: 5
+SSIHH: 5
+FMTKV: 5
+
+---
+
+Najčešće 2-znakovne sekvence:
+TK: 13
+GV: 13
+FR: 11
+KP: 10
+KI: 10
+
+Najčešće 3-znakovne sekvence:
+GVA: 7
+VAM: 7
+AML: 7
+KPV: 6
+TKP: 6
+
+Najčešće 4-znakovne sekvence:
+GVAM: 7
+VAML: 7
+NWHA: 6
+ATKI: 6
+WGVT: 6
+
+Najčešće 5-znakovne sekvence:
+GVAML: 7
+WGVTK: 6
+VAMLC: 5
+NWHAT: 5
+WHATK: 5
+
+---
+
+Najčešće 2-znakovne sekvence:
+HK: 11
+HW: 10
+WH: 9
+RI: 8
+ER: 7
+
+Najčešće 3-znakovne sekvence:
+WHK: 6
+HKL: 6
+HWW: 6
+NWH: 5
+HKE: 5
+
+Najčešće 4-znakovne sekvence:
+NWHK: 5
+WHKE: 5
+HWWR: 4
+WWRL: 4
+WRLM: 4
+
+Najčešće 5-znakovne sekvence:
+NWHKE: 4
+HWWRL: 4
+WWRLM: 4
+WRLMQ: 4
+WHKER: 3
+
+---
+
+Najčešće 2-znakovne sekvence:
+RF: 19
+KW: 17
+RI: 15
+PR: 14
+IY: 13
+
+Najčešće 3-znakovne sekvence:
+PRF: 13
+MPR: 11
+IYW: 9
+RIY: 9
+YWH: 8
+
+Najčešće 4-znakovne sekvence:
+MPRF: 10
+IYWH: 8
+WMPR: 8
+YWHK: 7
+VWMP: 7
+
+Najčešće 5-znakovne sekvence:
+IYWHK: 7
+VWMPR: 7
+WMPRF: 7
+MPRFY: 7
+YWHKW: 6
