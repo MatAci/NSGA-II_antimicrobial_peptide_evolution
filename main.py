@@ -1,5 +1,5 @@
-from PeptideEvolutionNSGAII import NSGA_II
-import VisualizeData
+from code.PeptideEvolutionNSGAII import NSGA_II
+import code.VisualizeData as VisualizeData
 import numpy as np
 import os
 

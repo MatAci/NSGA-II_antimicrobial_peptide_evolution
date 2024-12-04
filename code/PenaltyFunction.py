@@ -55,7 +55,7 @@ def applyPenaltyFactor(population, penalty_function_reducer):
         target_obj.average_similarity = average_similarity
 
     # We use 67% percentile beacuse it uses data instead of just positions
-    threshold_percentile = np.percentile(global_similarities, 67)
+    threshold_percentile = np.percentile(global_similarities, 85)
     similarity_threshold_values.append(threshold_percentile)
     similarity_min_values.append(np.min(global_similarities))
     similarity_max_values.append(np.max(global_similarities))
@@ -76,7 +76,7 @@ def applyPenaltyFactor(population, penalty_function_reducer):
 """
 
 
-def calculate_penalty(similarities, min_sim, max_sim, penalty_factor_reducer, p=2.5):
+def calculate_penalty(similarities, min_sim, max_sim, penalty_factor_reducer, p=2.75):
     #Izračunava kazne prema kvadratnoj funkciji
     penalties = []
     for sim in similarities:

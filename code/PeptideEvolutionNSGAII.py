@@ -3,14 +3,14 @@
 #add two numbers
 
 import numpy as np
-import PenaltyFunction
-import RandomGenerator
-import FitnessFunctionScraper
+import code.PenaltyFunction as PenaltyFunction
+import code.RandomGenerator as RandomGenerator
+import code.FitnessFunctionScraper as FitnessFunctionScraper
 import os
 import time
 import random
-import Mutations
-import FetchAMPProbability
+import code.Mutations as Mutations
+import code.FetchAMPProbability as FetchAMPProbability
 
 class NSGA_II:
 
@@ -121,7 +121,7 @@ class NSGA_II:
             )
         """
 
-        non_dominated_sorted_population = self.perform_non_dominated_sort(population)
+        non_dominated_sorted_population = self.perform_non_dominated_sort(population,False)
 
         for i, _ in enumerate(non_dominated_sorted_population):
             self.calculate_crowding_distance(non_dominated_sorted_population[i])
@@ -248,20 +248,19 @@ class NSGA_II:
                     else:
                         peptide_counts[peptide_string]['flag'] = False
                     
-                    # Penalize the 'ff_amp_probability' 70% for non-first peptides
-                    penalty_amp = peptide.ff_amp_probability * 0.8
+                    # Penalize the 'ff_amp_probability' 90% for non-first peptides
+                    penalty_amp = peptide.ff_amp_probability * 0.9
                     peptide.ff_amp_probability -= penalty_amp
                     
                     # Penalize the 'ff_toxicity' while keeping the sign intact for non-first peptides
                     if peptide.ff_toxicity > 0:
-                        penalty_toxicity = peptide.ff_toxicity * 0.8
+                        penalty_toxicity = peptide.ff_toxicity * 0.9
                         peptide.ff_toxicity -= penalty_toxicity  # Decrease positive toxicity
                     else:
-                        penalty_toxicity = peptide.ff_toxicity * 0.8
+                        penalty_toxicity = peptide.ff_toxicity * 0.9
                         peptide.ff_toxicity += penalty_toxicity  # Make negative toxicity more negative
         
-
-
+        
 
         # list_of_dominated_indices[n] will store indices of solutions
         # population[n] dominates over.

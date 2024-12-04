@@ -1,5 +1,5 @@
 import random
-from Constants import AMINO_ACIDS
+from code.Constants import AMINO_ACIDS
 
 def add_amino_acid(peptide):
     index = random.randint(0, len(peptide))
