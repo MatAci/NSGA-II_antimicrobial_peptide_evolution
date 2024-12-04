@@ -20,3 +20,8 @@ source env/bin/activate
 
 # Install the required packages
 pip install -r requirements.txt
+
+
+# MUSCLE
+
+https://www.ebi.ac.uk/jdispatcher/msa/muscle?stype=protein&format=clwstrict

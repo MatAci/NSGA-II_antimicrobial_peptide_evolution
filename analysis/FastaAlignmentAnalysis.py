@@ -27,7 +27,7 @@ def find_most_frequent_kmers(sequences, k_values=[2, 3, 4, 5]):
 # Glavna funkcija
 def main():
     # Putanja do tvoje datoteke
-    file_path = 'sequences.txt'
+    file_path = '/home/mataci/Desktop/NSGA-II_antimicrobial_peptide_evolution/analysis/sequences.txt'
     
     # Učitavanje sekvenci iz datoteke
     sequences = read_sequences_from_file(file_path)
