@@ -25,3 +25,10 @@ pip install -r requirements.txt
 # MUSCLE
 
 https://www.ebi.ac.uk/jdispatcher/msa/muscle?stype=protein&format=clwstrict
+
+# SEQUENCE LOGO GRAPH 
+
+https://weblogo.berkeley.edu/
+
+input from analysis/muscleAligment.txt
+bits 3
