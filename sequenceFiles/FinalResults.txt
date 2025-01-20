@@ -19,4 +19,6 @@
 (['V', 'W', 'M', 'P', 'R', 'F', 'A', 'R', 'I', 'Y', 'W', 'H', 'H', 'D', 'F', 'Q', 'R', 'M'], 'VWMPRFARIYWHHDFQRM', 0.8120544845873816, 3.06)
 (['N', 'P', 'L', 'E', 'L', 'M', 'E', 'K', 'I', 'Y', 'W', 'H', 'K', 'W', 'F', 'Q'], 'NPLELMEKIYWHKWFQ', 0.9766803966694776, 2.04)
 (['V', 'W', 'M', 'E', 'R', 'F', 'A', 'R', 'I', 'Y', 'T', 'K', 'K', 'W', 'Q', 'P'], 'VWMERFARIYTKKWQP', 0.8832620269761462, 2.69)
-(['N', 'R', 'F', 'W', 'N', 'F', 'Y', 'N', 'I', 'Y', 'W', 'H', 'K', 'W', 'T', 'C'], 'NRFWNFYNIYWHKWTC', 0.948231307866216, 2.13)
+(['N', 'R', 'F', 'W', 'N', 'F', 'Y', 'N', 'I', 'Y', 'W', 'H', 'K', 'W', 'T', 'C'], 'NRFWNFYNIYWHKWTC', 0.948231307866216, 2.13)Hyperarea for convex hull: 2.518405630950013
+Hyperarea for convex hull: 2.3798806663733
+Hyperarea for convex hull: 2.5894864774546216
