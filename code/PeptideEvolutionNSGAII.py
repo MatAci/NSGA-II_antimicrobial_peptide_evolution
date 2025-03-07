@@ -1,7 +1,4 @@
 #!/usr/bin/env python3
-
-#add two numbers
-
 import numpy as np
 import code.PenaltyFunction as PenaltyFunction
 import code.RandomGenerator as RandomGenerator
@@ -19,21 +16,20 @@ class NSGA_II:
         def __init__(self, peptide_list, peptide_string, ff_amp_probability, ff_toxicity):
             """Store information about a single solution.
 
-                       Parameters
-                       ----------
-                       peptide_list : list
-                           List of peptides aminoacids.
-                           E.g. ['A','D','K','R','S','M','E','A','C'...]
-                       peptide_string : string
-                           Peptide label.
-                       ff_amp_probability : float
-                           The possibility that antimicrobial peptide have antimicrobial properties.
-                       ff_toxicity : float
-                           The SVM score of toxicity of the peptide.
-                       average_similarity : float
-                            Average similarity relative to entire population
-
-                       """
+                Parameters
+                ----------
+                peptide_list : list
+                    List of peptides aminoacids.
+                    E.g. ['A','D','K','R','S','M','E','A','C'...]
+                peptide_string : string
+                    Peptide label.
+                ff_amp_probability : float
+                    The possibility that antimicrobial peptide have antimicrobial properties.
+                ff_toxicity : float
+                    The SVM score of toxicity of the peptide.
+                average_similarity : float
+                    Average similarity relative to entire population
+            """
 
             self.peptide_list = peptide_list
             self.peptide_string = peptide_string
@@ -82,8 +78,6 @@ class NSGA_II:
             Number which is used for reducing AMP probability if sequences are the same.
         similarity_threshold_values : List
             Penalty threshold collected through generations for graph plotting
-        start_time: float
-            Timer for testing purposes
         """
 
         self.lowerRange = lowerRange
@@ -95,7 +89,6 @@ class NSGA_II:
         self.mutation_probability = mutation_probability
         self.penalty_function_reducer = penalty_function_reducer
         self.similarity_threshold_values = []
-        self.start_time = time.time()
 
 
     def calculate(self):
@@ -114,12 +107,6 @@ class NSGA_II:
         """
         generation_number = 1
         population = self.generate_random_population(self.lowerRange, self.upperRange, self.population_size)
-        """
-        for pep in population:
-            print(
-                f"{pep.peptide_list} {pep.peptide_string} {pep.ff_amp_probability} {pep.ff_toxicity}\n"
-            )
-        """
 
         non_dominated_sorted_population = self.perform_non_dominated_sort(population,False)
 
@@ -181,6 +168,7 @@ class NSGA_II:
                 -------
                 List of self.Peptide objects.
                 """
+        
         #[['Q', 'C'], ['Y', 'E', 'W']]
         peptides = RandomGenerator.generate_random_peptides(lowerRange, upperRange, population_size)
 
@@ -191,12 +179,9 @@ class NSGA_II:
                 peptide_string = ''.join(peptide)
                 file.write(f'>{peptide_string}\n{peptide_string}\n')
 
-        # self.time_lapse("Unutar generate_random_population prije računanja AMP-a")
         # peptide_and_ff_amp_probability = FitnessFunctionScraper.scrape_fitness_function()
         peptide_and_ff_amp_probability = FetchAMPProbability.fetchAMPProbability(peptides)
-        # self.time_lapse("Unutar generate_random_population nakon AMP Prije toxictiy")
         toxicity = FitnessFunctionScraper.toxicity()
-        # self.time_lapse("Unutar generate_random_population nakon toxicity")
         
         if os.path.exists('in.txt'):
             os.remove('in.txt')
@@ -205,6 +190,7 @@ class NSGA_II:
             list_of_peptide_objects.append(self.Peptide(list(peptide_string), peptide_string, float(ff_amp_probability), float(svm_score)))
 
         return list_of_peptide_objects
+
 
     def perform_non_dominated_sort(self, population, flag = True):
         """Divide the population into pareto fronts.
@@ -281,17 +267,8 @@ class NSGA_II:
                 # Check if one solution dominates over the other, or they
                 # are equal.
 
-                # amp_weight = 0.7
-                # toxicity_weight = 0.3
-    
-                # amp_prob_diff = amp_weight * (population[i].ff_amp_probability - population[j].ff_amp_probability)
-                # toxicity_diff = toxicity_weight * (population[i].ff_toxicity - population[j].ff_toxicity)
                 amp_prob_diff = np.sign(population[i].ff_amp_probability - population[j].ff_amp_probability)
                 toxicity_diff = np.sign(population[i].ff_toxicity - population[j].ff_toxicity)
-                # if amp_prob_diff >= 0 and toxicity_diff <= 0:
-                # elif amp_prob_diff < 0 and toxicity_diff > 0:
-
-
 
                 if (amp_prob_diff > 0 and toxicity_diff >= 0) or (amp_prob_diff >= 0 and toxicity_diff > 0):
                     # In this case, population[i] dominates over population[j].
@@ -351,6 +328,7 @@ class NSGA_II:
 
         return object_pareto_fronts
 
+
     def calculate_crowding_distance(self, pareto_front):
         """Calculate crowding distance for a single pareto front.
 
@@ -396,6 +374,7 @@ class NSGA_II:
             sorted_front_ff_amp_probability[i].distance += (sorted_front_ff_amp_probability[i+1].ff_amp_probability - sorted_front_ff_amp_probability[i-1].ff_amp_probability) / max_ff_amp_probability
             sorted_front_ff_toxicity[i].distance += (sorted_front_ff_toxicity[i+1].ff_toxicity - sorted_front_ff_toxicity[i-1].ff_toxicity) / max_ff_toxicity
 
+
     def generate_offspring(self, population):
         """Generate offspring.
 
@@ -435,20 +414,20 @@ class NSGA_II:
 
         return offspring
 
+
     def fetch_fitness_function_values(self, population):
 
         list_of_peptides = [peptide.peptide_string for peptide in population]
         # peptide_and_ff_amp_probability = FitnessFunctionScraper.scrape_fitness_function()
         peptide_and_ff_amp_probability = FetchAMPProbability.fetchAMPProbability(list_of_peptides)
-        # self.time_lapse("Unutar generate_offspring nakon računanja AMP-a prije toxicity-a")
 
         for peptide_string, ff_amp_probability in peptide_and_ff_amp_probability:
-            # Pronađi odgovarajući peptid u populaciji i ažuriraj njegove vrijednosti
             for peptide in population:
                 if peptide.peptide_string == peptide_string: 
                     peptide.ff_amp_probability = float(ff_amp_probability)   
 
         return population
+
 
     def generate_single_solution(self, population):
         """Generate a single child.
@@ -475,6 +454,7 @@ class NSGA_II:
             child_peptide_list = self.mutate(child_peptide_list)
         
         return child_peptide_list
+
 
     def tournament_select_parent(self, population):
         """Select one parent by tournament selection.
@@ -504,6 +484,7 @@ class NSGA_II:
                 random_parent = random_opponent
 
         return random_parent
+
 
     def mutate(self, child_peptide_list):
         """Mutate a child.
@@ -538,6 +519,7 @@ class NSGA_II:
 
         return child_peptide_list
 
+
     def next_generation(self, non_dominated_sorted_population):
         """Select individuals for the next generation.
 
@@ -569,33 +551,3 @@ class NSGA_II:
                 break
 
         return next_generation
-        """
-        # rezanje za sada maknuto
-        next_generation = []
-
-        for pareto_front in non_dominated_sorted_population:
-            # Filter out peptides with AMP probability < 0.2 or negative toxicity
-            pareto_front = [pep for pep in pareto_front if pep.ff_amp_probability >= 0.2 and pep.ff_toxicity >= -1.0]
-
-            if len(pareto_front) + len(next_generation) <= self.population_size:
-                # If the whole pareto front fits into next generation, add it.
-                next_generation.extend(pareto_front)
-            elif self.population_size - len(next_generation) > 0:
-                # Otherwise, add the individuals with the highest crowding distance
-                # to preserve genetic diversity.
-                pareto_front.sort(key=lambda solution: solution.distance)
-                next_generation.extend(
-                    pareto_front[-(self.population_size-len(next_generation)):]
-                )
-                break
-
-        return next_generation
-        """
-    
-    def time_lapse(self,checkpoint_name="Checkpoint"):
- 
-        current_time = time.time() - self.start_time
-        time_text = f"{current_time:.2f} sekundi - {checkpoint_name}\n"
-        # Zapisujemo vreme u datoteku
-        with open("time.txt", "a") as fajl:
-            fajl.write(time_text)

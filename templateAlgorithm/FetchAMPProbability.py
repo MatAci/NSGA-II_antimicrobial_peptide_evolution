@@ -2,7 +2,7 @@ import subprocess
 import numpy as np
 
 def fetchAMPProbability(peptides):
-    
+
     #[['QC'],['YEW']]
     peptides = [[ ''.join(inner_list) ] for inner_list in peptides]
     #['QC', 'YEW']

@@ -25,6 +25,7 @@ def visualize_pareto_fronts(pareto_fronts):
 
     plt.show()
 
+
 def visualize_convex_hull(pareto_front):
     # Extract (ff_toxicity, ff_amp_probability) from the zero pareto_front
     points = [(pep[3], pep[2]) for pep in pareto_front]
@@ -88,6 +89,7 @@ def calculate_hyperarea(pareto_front):
     hyperarea = np.trapz(y_values, x_values)
     
     return hyperarea
+
 
 def visulize_threshold_through_generations(similarity_threshold_values):
 

@@ -218,7 +218,6 @@ class Mutations:
 
         return list_of_peptide_objects
 
-
     def calculate(self):
         """
         Perform the main NSGA-II algorithm.

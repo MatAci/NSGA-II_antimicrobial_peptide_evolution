@@ -9,8 +9,7 @@ def fetchAMPProbability(peptides):
     flattened_args = [item[0] for item in peptides]
 
     args = ['amp'] + flattened_args
-
-    # Shell script for fetching AMP probability
+    # Poziv shell skripte za dobivanje AMP vjerojatnosti
     result = subprocess.run(
         ['/home/mataci/Desktop/NSGA-II_antimicrobial_peptide_evolution/run_prediction.sh'] + args,
         capture_output=True,

@@ -18,7 +18,8 @@ GA = NSGA_II(
     num_generations=30,
     num_solutions_tournament=5,
     mutation_probability=0.05,
-    penalty_function_reducer=0.15
+    penalty_function_reducer=0.15,
+    template="HKWHR--IYW--"
 )
 
 pareto_fronts = GA.calculate()

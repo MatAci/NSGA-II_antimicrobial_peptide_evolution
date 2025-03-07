@@ -85,9 +85,6 @@ GA = Mutations(
 
 )
 
-
 generation_stats = GA.calculate()
 reversed_array = generation_stats[::-1]
 plot_generation_stats(reversed_array)
-
-

@@ -58,7 +58,8 @@ class NSGA_II:
                  num_generations,
                  num_solutions_tournament,
                  mutation_probability,
-                 penalty_function_reducer
+                 penalty_function_reducer,
+                 template
                  ):
         """Save the forwarded arguments.
 
@@ -96,6 +97,7 @@ class NSGA_II:
         self.penalty_function_reducer = penalty_function_reducer
         self.similarity_threshold_values = []
         self.start_time = time.time()
+        self.template = template
 
 
     def calculate(self):
@@ -116,15 +118,9 @@ class NSGA_II:
         with open('/home/mataci/Desktop/NSGA-II_antimicrobial_peptide_evolution/templateAlgorithm/FinalResults.txt', 'w') as file:
             file.write('')  # Očisti sadržaj datoteke
         generation_number = 1
-        template = "HKWHR--IYW------"
-        peptide_variable, population = self.generate_random_population(16, self.population_size, template)
+        template = self.template
+        peptide_variable, population = self.generate_random_population(10, self.population_size, template)
 
-        """
-        for pep in population:
-            print(
-                f"{pep.peptide_list} {pep.peptide_string} {pep.ff_amp_probability} {pep.ff_toxicity}\n"
-            )
-        """
         non_dominated_sorted_population = self.perform_non_dominated_sort(population,False)
 
         for i, _ in enumerate(non_dominated_sorted_population):
@@ -163,6 +159,8 @@ class NSGA_II:
         for solution in population:
             solution.reset()
 
+        population = self.fetch_fitness_function_values(population)
+        
         pareto_fronts = self.perform_non_dominated_sort(population, False)
         return [
             [
@@ -172,7 +170,6 @@ class NSGA_II:
                  solution.ff_toxicity) for solution in pareto_front
             ] for pareto_front in pareto_fronts
         ]
-
 
     def generate_random_population(self, size, population_size, template):
         """Generate N random individuals within given range.
@@ -202,12 +199,9 @@ class NSGA_II:
                 peptide_string = ''.join(peptide)
                 file.write(f'>{peptide_string}\n{peptide_string}\n')
 
-        # self.time_lapse("Unutar generate_random_population prije računanja AMP-a")
         # peptide_and_ff_amp_probability = FitnessFunctionScraper.scrape_fitness_function()
         peptide_and_ff_amp_probability = FetchAMPProbability.fetchAMPProbability(peptides)
-        # self.time_lapse("Unutar generate_random_population nakon AMP Prije toxictiy")
         toxicity = FitnessFunctionScraper.toxicity()
-        # self.time_lapse("Unutar generate_random_population nakon toxicity")
         
         if os.path.exists('in.txt'):
             os.remove('in.txt')
@@ -469,10 +463,8 @@ class NSGA_II:
         list_of_peptides = [peptide.peptide_string for peptide in population]
         # peptide_and_ff_amp_probability = FitnessFunctionScraper.scrape_fitness_function()
         peptide_and_ff_amp_probability = FetchAMPProbability.fetchAMPProbability(list_of_peptides)
-        # self.time_lapse("Unutar generate_offspring nakon računanja AMP-a prije toxicity-a")
 
         for peptide_string, ff_amp_probability in peptide_and_ff_amp_probability:
-            # Pronađi odgovarajući peptid u populaciji i ažuriraj njegove vrijednosti
             for peptide in population:
                 if peptide.peptide_string == peptide_string: 
                     peptide.ff_amp_probability = float(ff_amp_probability)   
@@ -617,23 +609,4 @@ class NSGA_II:
         # Ažuriraj peptide_variable tako da sadrži samo varijabilne dijelove odabranih jedinki
         peptide_variable[:] = next_variable_parts
 
-        """
-        print("Next Generation Peptides:")
-        for pep in next_generation:
-            print(
-                f"{pep.peptide_list} {pep.peptide_string} {pep.ff_amp_probability} {pep.ff_toxicity}\n"
-            )
-
-        print("\nUpdated Peptide Variable Array:")
-        for variable_part in peptide_variable:
-            print(variable_part)
-        """
         return next_generation
- 
-    def time_lapse(self,checkpoint_name="Checkpoint"):
- 
-        current_time = time.time() - self.start_time
-        time_text = f"{current_time:.2f} sekundi - {checkpoint_name}\n"
-        # Zapisujemo vreme u datoteku
-        with open("time.txt", "a") as fajl:
-            fajl.write(time_text)

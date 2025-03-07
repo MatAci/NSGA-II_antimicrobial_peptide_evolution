@@ -22,3 +22,5 @@
 (['N', 'R', 'F', 'W', 'N', 'F', 'Y', 'N', 'I', 'Y', 'W', 'H', 'K', 'W', 'T', 'C'], 'NRFWNFYNIYWHKWTC', 0.948231307866216, 2.13)Hyperarea for convex hull: 2.518405630950013
 Hyperarea for convex hull: 2.3798806663733
 Hyperarea for convex hull: 2.5894864774546216
+Hyperarea for convex hull: 2.45845
+Hyperarea for convex hull: 2.6201500000000006
