@@ -6,14 +6,13 @@ similarity_min_values = []
 similarity_max_values = []
 similarity_mean_values = []
 
-
 def calculate_penalty(similarities, min_sim, max_sim, penalty_factor_reducer, p=2.75):
-    #Izračunava kazne prema kvadratnoj funkciji
+    #Calculating penalties for each peptide with p factor
     penalties = []
     for sim in similarities:
-        # Normaliziraj sličnost
+        # Similarity normalization
         norm_sim = (sim - min_sim) / (max_sim - min_sim) if max_sim > min_sim else 0
-        # Primijeni kvadratnu kaznu
+        # Apllying penalty factor function
         penalty = (norm_sim ** p) * penalty_factor_reducer
         penalties.append(penalty)
     return penalties
@@ -65,19 +64,19 @@ def applyPenaltyFactor(population, penalty_function_reducer):
         global_similarities.append(average_similarity)
         target_obj.average_similarity = average_similarity
 
-    # Izračun minimalnih i maksimalnih sličnosti
+    # Min and max similarity
     min_sim = np.min(global_similarities)
     max_sim = np.max(global_similarities)
     
-    # Izračun kazni
+    # Calculate penalties
     penalties = calculate_penalty(global_similarities, min_sim, max_sim, penalty_function_reducer)
 
-    # Primijeni kazne na populaciju
+    # Apply penalties for population
     for peptide, penalty in zip(population, penalties):
-        # Primjeni kaznu na ff_amp_probability
+        # Penalty applied to the AMP probability
         peptide.ff_amp_probability -= penalty
     
-    # Pohrani vrijednosti za statistiku
+    # Statistics
     similarity_threshold_values.append(np.percentile(global_similarities, 67))
     similarity_min_values.append(min_sim)
     similarity_max_values.append(max_sim)

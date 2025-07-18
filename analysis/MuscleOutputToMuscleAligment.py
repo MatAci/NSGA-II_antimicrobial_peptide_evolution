@@ -1,9 +1,9 @@
-# Otvori ulaznu datoteku (muscleOutput.txt) i izlaznu datoteku (musclealignment.txt)
+# Open the input file (muscleOutput.txt) and the output file (muscleAlignment.txt)
 with open("analysis/muscleOutput.txt", "r") as input_file, open("analysis/muscleAlignment.txt", "w") as output_file:
     for line in input_file:
-        # Preskoči prazne linije i zaglavlja
+        # Skip empty lines and headers
         if line.strip() and not line.startswith("CLUSTAL") and not line.startswith(" "):
-            # Podijeli liniju na riječi prema prazninama
+            # Split the line into words by whitespace
             columns = line.split()
-            if len(columns) >= 2:  # Provjeri ima li drugi stupac
-                output_file.write(columns[1] + "\n")  # Zapiši drugi stupac u novi file
+            if len(columns) >= 2:  # Check if there is a second column
+                output_file.write(columns[1] + "\n")  # Write the second column to the new file

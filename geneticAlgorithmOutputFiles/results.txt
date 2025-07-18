@@ -1,0 +1,10 @@
+Pareto fronts solutions:
+(['A', 'V', 'W', 'L', 'L', 'W', 'T', 'Y', 'H', 'K', 'K', 'I', 'H', 'T', 'Q', 'S', 'S', 'I'], 'AVWLLWTYHKKIHTQSSI', 0.9067595004346586, 1.37)
+(['Q', 'N', 'Q', 'T', 'E', 'R', 'P', 'R', 'R', 'Y', 'F', 'T', 'C', 'P'], 'QNQTERPRRYFTCP', 0.8179226276126887, 1.41)
+(['D', 'W', 'Y', 'D', 'K', 'R', 'D', 'F', 'P', 'Q', 'Y', 'C', 'L', 'F', 'W', 'N', 'K'], 'DWYDKRDFPQYCLFWNK', 0.9202457507410019, 0.2)
+(['N', 'L', 'I', 'A', 'I', 'K', 'V', 'Q', 'Q', 'Q', 'V', 'I', 'W', 'M', 'A', 'N', 'Q', 'A', 'R'], 'NLIAIKVQQQVIWMANQAR', 0.5907188647305001, 1.42)
+(['Q', 'G', 'I', 'Y', 'N', 'N', 'A', 'R', 'Q', 'M', 'T', 'Q'], 'QGIYNNARQMTQ', -0.0019293095608696742, 1.71)
+Hyperarea for current parameters: 1.3814081172827644
+Hyperarea for convex hull: 1.3877339825341206
+Hyperarea for convex hull: 2.0332999999999997
+Hyperarea for convex hull: 1.9830000000000005

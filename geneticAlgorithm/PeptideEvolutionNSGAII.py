@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 import numpy as np
-import code.PenaltyFunction as PenaltyFunction
-import code.RandomGenerator as RandomGenerator
-import code.FitnessFunctionScraper as FitnessFunctionScraper
+import geneticAlgorithm.PenaltyFunction as PenaltyFunction
+import geneticAlgorithm.RandomGenerator as RandomGenerator
+import geneticAlgorithm.FitnessFunctionScraper as FitnessFunctionScraper
 import os
 import time
 import random
-import code.Mutations as Mutations
-import code.FetchAMPProbability as FetchAMPProbability
+import geneticAlgorithm.Mutations as Mutations
+import geneticAlgorithm.FetchAMPProbability as FetchAMPProbability
 
 class NSGA_II:
 
@@ -54,7 +54,8 @@ class NSGA_II:
                  num_generations,
                  num_solutions_tournament,
                  mutation_probability,
-                 penalty_function_reducer
+                 penalty_function_reducer,
+                 flag
                  ):
         """Save the forwarded arguments.
 
@@ -89,6 +90,7 @@ class NSGA_II:
         self.mutation_probability = mutation_probability
         self.penalty_function_reducer = penalty_function_reducer
         self.similarity_threshold_values = []
+        self.flag = flag
 
 
     def calculate(self):
@@ -108,7 +110,7 @@ class NSGA_II:
         generation_number = 1
         population = self.generate_random_population(self.lowerRange, self.upperRange, self.population_size)
 
-        non_dominated_sorted_population = self.perform_non_dominated_sort(population,False)
+        non_dominated_sorted_population = self.perform_non_dominated_sort(population)
 
         for i, _ in enumerate(non_dominated_sorted_population):
             self.calculate_crowding_distance(non_dominated_sorted_population[i])
@@ -139,7 +141,7 @@ class NSGA_II:
         for solution in population:
             solution.reset()
 
-        pareto_fronts = self.perform_non_dominated_sort(population, False)
+        pareto_fronts = self.perform_non_dominated_sort(population)
         return [
             [
                 (solution.peptide_list,
@@ -192,7 +194,7 @@ class NSGA_II:
         return list_of_peptide_objects
 
 
-    def perform_non_dominated_sort(self, population, flag = True):
+    def perform_non_dominated_sort(self, population):
         """Divide the population into pareto fronts.
     
         Parameters
@@ -206,7 +208,7 @@ class NSGA_II:
             E.g., [[Peptide#1, Peptide#2, ...], ...]
         """
 
-        if flag == True:
+        if self.flag == True:
             self.similarity_threshold_values = PenaltyFunction.applyPenaltyFactor(population, self.penalty_function_reducer)
 
         

@@ -1,5 +1,4 @@
-from Mutations import Mutations
-import numpy as np
+from SpaceExploration import SpaceExploration
 import os
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MaxNLocator
@@ -75,13 +74,14 @@ RDRNHFYYNLYGAAHK, 0.88, 1.09
 PAMNDYEVFGYAYRHK, 0.31, 1.17
 """
 
-GA = Mutations(
+GA = SpaceExploration(
         length = 16,
         population_size = 20,
         num_generations = 15,
         subsequence = 'HK',
         neutral = 'LI',
-        data = data
+        data = data,
+        flag = False # Set to False generate random first population with selected subsequence, if True, it will use the provided data from data input and also replace subsequence with neutral amino acids
 
 )
 

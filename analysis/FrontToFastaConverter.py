@@ -1,6 +1,6 @@
 import ast
 
-# This file converts data from FinalResults.txt to FASTA so further data can be explored
+# This file converts data from front.txt to FASTA so further data can be explored
 
 with open('analysis/front.txt', 'r') as file:
     lines = file.readlines()

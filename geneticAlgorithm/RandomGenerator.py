@@ -1,7 +1,7 @@
 import numpy as np
 import random
 import time
-from code.Constants import AMINO_ACIDS
+from geneticAlgorithm.Constants import AMINO_ACIDS
 
 def generate_random_peptides(lowerRange, upperRange, numberOfRandomlyGeneratedPeptides):
     peptides = []

@@ -3,7 +3,7 @@ from Constants import AMINO_ACIDS
 import FetchAMPProbability, FitnessFunctionScraper
 import os
 
-class Mutations:
+class SpaceExploration:
 
     class Peptide:
         def __init__(self, peptide_list, peptide_string, ff_amp_probability, ff_toxicity):
@@ -13,7 +13,7 @@ class Mutations:
             self.ff_toxicity = ff_toxicity
             self.average_similarity = 0
 
-    def __init__(self, length, population_size, num_generations, subsequence, neutral, data):
+    def __init__(self, length, population_size, num_generations, subsequence, neutral, data, flag):
         """
         Initialize the NSGA_II class with the given parameters.
 
@@ -34,8 +34,9 @@ class Mutations:
         self.subsequence = subsequence
         self.neutral = neutral
         self.data = data
+        self.flag = flag
 
-    def generate_population(self, generation_number, population, flag):
+    def generate_population(self, generation_number, population):
         """
         Generate the population for the current generation.
 
@@ -53,7 +54,7 @@ class Mutations:
         """
         if generation_number == 1:
             # Generate a random population for the first generation
-            if flag == 0:
+            if self.flag == False:
                 return self.generate_random_population(self.length-generation_number-len(self.subsequence)+1)
             else:
                 return self.modify_existing_population(self.length-generation_number-len(self.neutral)+1)
@@ -232,28 +233,22 @@ class Mutations:
         generation_number = 1
         population = []
 
-        # Za statistiku
-        generation_stats = []  # Lista gdje će svaki indeks predstavljati generaciju
+        generation_stats = []  
 
-        # Očisti datoteku na početku
-        with open('subsequenceMutation/results.txt', 'w') as file:
-            file.write('')  # Očisti sadržaj datoteke
+        # Clear the results file before starting
+        with open('subsequenceExploration/results.txt', 'w') as file:
+            file.write('') 
 
-        # Generacijska petlja
         while generation_number <= self.num_generations and (self.length - generation_number - len(self.subsequence) + 1) >= 0:
             print(f"Generation: {generation_number}/{self.num_generations}")
 
-            # Generiraj populaciju
-            # population = self.generate_random_population(self.length - generation_number - len(self.subsequence) + 1)
-            # ako je flag 1 onda se radi alanin a ako je 0 onda se radi random
-            population = self.generate_population(generation_number, population, 1)
+            population = self.generate_population(generation_number, population)
 
-            # Brojači za statistiku
             amp_count = 0
             toxicity_count = 0
             both_threshold_count = 0
 
-            # Provjeri pragove za svaku sekvencu
+            # Check each peptide in the population against the thresholds
             for peptide in population:
                 if peptide.ff_amp_probability >= amp_threshold:
                     amp_count += 1
@@ -262,23 +257,24 @@ class Mutations:
                 if peptide.ff_amp_probability >= amp_threshold and peptide.ff_toxicity >= toxicity_threshold:
                     both_threshold_count += 1
 
-            # Spremi statistiku za trenutnu generaciju
+            # Save statistics for the current generation
             generation_stats.append({
                 'amp_count': amp_count,
                 'toxicity_count': toxicity_count,
                 'both_threshold_count': both_threshold_count
             })
 
-            # Dodaj rezultate u datoteku
-            with open('subsequenceMutation/results.txt', 'a') as file:
+            # Add results to the file
+            with open('subsequenceExploration/results.txt', 'a') as file:
                 for peptide in population:
                     file.write(f'{peptide.peptide_string}, {peptide.ff_amp_probability}, {peptide.ff_toxicity}\n')
                 file.write(f'\n')
 
             generation_number += 1
 
-        # Za Sekvencu HK daje HK--, -HK--, --HK-- ... a u result je ---HK, --HK-,--HK--...
-        # Vraćamo statistiku za sve generacije
+        # For the sequence "HK" it gives HK--, -HK--, --HK-- ... but in the result it's ---HK, --HK-, --HK--...
+        # We return the statistics for all generations
+
         return generation_stats
 
 

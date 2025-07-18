@@ -96,9 +96,6 @@ def save_results_to_file(results, filename="analysis/resultFromFrequency.txt"):
             file.write("\n")  # Prazan red za odvajanje
 
 
-
-
-
 # Učitavanje sadržaja datoteke
 data_file_path = 'analysis/resultsFromAnalysis.txt'
 with open(data_file_path, 'r') as file:

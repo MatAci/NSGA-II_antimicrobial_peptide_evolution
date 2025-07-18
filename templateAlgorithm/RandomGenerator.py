@@ -4,11 +4,9 @@ import time
 from Constants import AMINO_ACIDS
 
 def generate_random_peptides(size, numberOfRandomlyGeneratedPeptides, template):
-    peptides = []
     peptides_variable = []
     peptides_full = []
 
-    # Pronađi pozicije gdje se nalaze crtice '-' u templateu
     variable_positions = [i for i, char in enumerate(template) if char == '-']
     num_variable_sites = len(variable_positions)
 
@@ -16,13 +14,11 @@ def generate_random_peptides(size, numberOfRandomlyGeneratedPeptides, template):
         seed = int(time.time() + random.random())
         np.random.seed(seed)
 
-        # Generiraj nasumične aminokiseline za varijabilne pozicije (duljine 8)
         random_sequence = np.random.choice(AMINO_ACIDS, size=num_variable_sites, replace=True).tolist()
 
         if random_sequence not in peptides_variable:
             peptides_variable.append(random_sequence)
 
-            # Kreiraj novu jedinku popunjavanjem templatea
             new_peptide = list(template)
             for i, pos in enumerate(variable_positions):
                 new_peptide[pos] = random_sequence[i]

@@ -1,8 +1,10 @@
 #!/bin/bash
 
+# Navigate to the local seqprops_therapeutic repository
 cd /home/mataci/Desktop/seqprops_therapeutic
-# Aktiviraj myenv2 environment
+
+# Activate the myenv2 virtual environment
 source /home/mataci/Desktop/seqprops_therapeutic/myenv2/bin/activate
 
-# Pokreni prediction_script.py s proslijeđenim argumentima
+# Run prediction_script.py with any passed arguments
 python /home/mataci/Desktop/seqprops_therapeutic/prediction_script.py "$@"

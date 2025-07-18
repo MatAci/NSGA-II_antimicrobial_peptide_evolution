@@ -1,59 +1,73 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.integrate import trapezoid
+from matplotlib.lines import Line2D
 
 def extract_points(file_content):
     """
-    Izvlači točke (x, y) iz datog sadržaja datoteke.
+    Extracts points (x, y) from the given file content.
     
-    :param file_content: Sadržaj datoteke kao string.
-    :return: Lista točaka (x, y) kao tuple-ovi.
+    :param file_content: File content as a string.
+    :return: List of points (x, y) as tuples.
     """
     points = []
     for line in file_content.strip().split("\n"):
-        # Uklanja zagrade i razdvaja elemente
+        # Removes parentheses and splits elements
         elements = eval(line.strip())
-        x = elements[2]  # Treći element
-        y = elements[3]  # Četvrti element
+        x = elements[2]  # Third element
+        y = elements[3]  # Fourth element
         points.append((x, y))
     return points
 
-
 def visualize_convex_hull(pareto_fronts, labels):
-    """
-    Vizualizira Convex Hull krivulje za više Pareto fronti i dodaje oznake za svaki front.
-
-    Parametri:
-    pareto_fronts - lista listi, gdje svaka lista predstavlja Pareto front u obliku (Toksičnost, AMP vjerojatnost).
-    labels - lista tupla, gdje svako tuple sadrži naziv skupa i njegovu vrijednost.
-    """
     plt.figure(figsize=(10, 6))
-    
-    for idx, pareto_front in enumerate(pareto_fronts):
-        # Extract (Toksičnost, AMP vjerojatnost) from the given pareto_front data
-        x = np.array([point[1] for point in pareto_front])  # Toksičnost
-        y = np.array([point[0] for point in pareto_front])  # AMP vjerojatnost
+    ax = plt.gca()  # Get axes for later manipulation
 
-        # Sort points by x-values (Toksičnost)
+    for idx, pareto_front in enumerate(pareto_fronts):
+        x = np.array([point[1] for point in pareto_front])  # Toxicity
+        y = np.array([point[0] for point in pareto_front])  # AMP probability
+
         sorted_indices = np.argsort(x)
         sorted_x = x[sorted_indices]
         sorted_y = y[sorted_indices]
 
-        # Add the point (0, 1) to the beginning of the Pareto front
-        x_hull = np.concatenate(([0], sorted_x))  # Toksičnost
-        y_hull = np.concatenate(([1], sorted_y))  # AMP vjerojatnost
+        x_hull = np.concatenate(([0], sorted_x))
+        y_hull = np.concatenate(([1], sorted_y))
 
-        # Plot the convex hull without filling the area under the curve
-        plt.plot(x_hull, y_hull, marker='o', linestyle='-', label=f'{labels[idx][0]} (CHArea: {labels[idx][1]}, BrojTočaka: {labels[idx][2]})')
-    
-    # Plot settings
-    plt.title("Prikaz više pareto fronti različitih vrćenja algoritma")
-    plt.xlabel("Toksičnost (ff_toxicity)")  # x-axis: Toksičnost
-    plt.ylabel("Vjerojatnost postojanja AMP svojstva (ff_amp_probability)")  # y-axis: AMP vjerojatnost
-    plt.xlim(0, max([np.array(x).max() for x in pareto_fronts])*1.1)  # Adjusting x-axis limit slightly to the right
-    plt.ylim(0, 1)  # y-axis limited to 0-1 (AMP vjerojatnost)
-    plt.grid(True)
-    plt.legend(loc='lower left')
+        label_text = f"{['First', 'Second', 'Third', 'Fourth', 'Fifth'][idx]} algorithm execution"
+        ax.plot(x_hull, y_hull, marker='o', linestyle='', label=label_text, markersize=14)
+
+    # First legend – automatic, related to Pareto fronts
+    legend1 = ax.legend(loc='lower left', fontsize=25, title_fontsize=25)
+    ax.add_artist(legend1)  # Add manually so another legend can be added later
+
+    # Create empty black and gray circles for the legend
+    empty_black_circle = Line2D([0], [0], marker='o', markerfacecolor='none',
+                                markeredgewidth=2, markersize=18, color='black',
+                                label='High AMP potential, increased toxicity', linestyle='none')
+    empty_gray_circle = Line2D([0], [0], marker='o', markerfacecolor='none',
+                               markeredgewidth=2, markersize=18, color='gray',
+                               label='Lower AMP activity, reduced toxicity', linestyle='none')
+
+    # Add empty circles to legend
+    ax.legend(handles=[empty_black_circle, empty_gray_circle],
+              loc='lower right', title='Marked area',
+              fontsize=25, title_fontsize=25)
+
+    ax.set_title("Comparison of Pareto fronts across algorithm executions", fontsize=30)
+    ax.set_xlabel("Toxicity fitness value", fontsize=30)
+    ax.set_ylabel("AMP Probability fitness value", fontsize=30)
+
+    # Increase font size of axis ticks
+    ax.tick_params(axis='both', which='major', labelsize=24)
+
+    # Limit y-axis from 0.55 to 1 for better readability
+    ax.set_ylim(0.55, 1)
+
+    # Automatically set x-axis as before
+    ax.set_xlim(0, max([np.array([point[1] for point in pf]).max() for pf in pareto_fronts]) * 1.1)
+
+    ax.grid(True)
+    ax.set_aspect('auto')
     plt.show()
 
 
@@ -170,14 +184,14 @@ file_content5="""
 (['N', 'R', 'F', 'W', 'N', 'F', 'Y', 'N', 'I', 'Y', 'W', 'H', 'K', 'W', 'T', 'C'], 'NRFWNFYNIYWHKWTC', 0.948231307866216, 2.13)
 """
 
-# Poziv funkcije
+# Function call
 points1 = extract_points(file_content1)
 points2 = extract_points(file_content2)
 points3 = extract_points(file_content3)
 points4 = extract_points(file_content4)
 points5 = extract_points(file_content5)
 
-# Labels s nazivima i površinama
+# Labels with names and areas
 labels = [
     ("1", 2.7804, len(points1)),
     ("2", 2.4983, len(points2)),
@@ -187,5 +201,5 @@ labels = [
 ]
 
 pareto_fronts = [points1, points2, points3, points4, points5]
-visualize_convex_hull(pareto_fronts,labels)
-
+# pareto_fronts = [points1]
+visualize_convex_hull(pareto_fronts, labels)

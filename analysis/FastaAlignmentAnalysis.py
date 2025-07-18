@@ -1,47 +1,46 @@
 from collections import Counter
 
-# Funkcija za čitanje sekvenci iz datoteke i uzimanje samo drugog stupca
+# Function to read sequences from a file and extract only the second column
 def read_sequences_from_file(file_path):
     sequences = []
     with open(file_path, 'r') as file:
         lines = file.readlines()
         
-        # Početak čitanja od 3. retka (indeks 2)
+        # Start reading from the 3rd line (index 2)
         for line in lines[2:]:
             parts = line.split()
             if len(parts) > 1:
-                # Drugi stupac je sekvenca koju želimo, uklanjamo '-'
+                # The second column is the sequence we want, remove '-'
                 sequences.append(parts[1].replace('-', ''))  
-    return ''.join(sequences)  # Spajanje svih sekvenci u jedan string
+    return ''.join(sequences)  # Concatenate all sequences into a single string
 
-
-# Funkcija za pronalaženje najčešćih k-mers sekvenci za različite duljine
+# Function to find the most frequent k-mer sequences for different lengths
 def find_most_frequent_kmers(sequences, k_values=[2, 3, 4, 5]):
     results = {}
     for k in k_values:
         kmers = [sequences[i:i+k] for i in range(len(sequences) - k + 1)]
-        kmer_counts = Counter(kmers)  # Brojanje frekvencije svake k-mers sekvence
-        results[k] = kmer_counts.most_common(5)  # Vraća 5 najčešćih k-mers sekvenci
+        kmer_counts = Counter(kmers)  # Count the frequency of each k-mer sequence
+        results[k] = kmer_counts.most_common(5)  # Return the top 5 most frequent k-mers
     return results
 
-# Glavna funkcija
+# Main function
 def main():
-    # Putanja do tvoje datoteke
+    # Path to your file
     file_path = 'analysis/muscleOutput.txt'
     
-    # Učitavanje sekvenci iz datoteke
+    # Load sequences from the file
     sequences = read_sequences_from_file(file_path)
     
-    # Pronađi najčešće k-mers sekvence za duljine 2, 3, 4 i 5
+    # Find the most frequent k-mer sequences for lengths 2, 3, 4, and 5
     frequent_kmers = find_most_frequent_kmers(sequences)
     
-    # Ispis najčešćih k-mers sekvenci za svaku duljinu
+    # Print the most frequent k-mer sequences for each length
     for k, kmers in frequent_kmers.items():
-        print(f"Najčešće {k}-znakovne sekvence:")
+        print(f"Most frequent {k}-mer sequences:")
         for kmer, count in kmers:
             print(f"{kmer}: {count}")
         print()
 
-# Pokretanje glavne funkcije
+# Run the main function
 if __name__ == "__main__":
     main()

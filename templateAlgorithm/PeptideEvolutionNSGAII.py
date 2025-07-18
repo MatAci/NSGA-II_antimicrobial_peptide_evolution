@@ -114,9 +114,8 @@ class NSGA_II:
              Peptide string,
              Value of fitness function that represent possibility of peptide having AMP properties).
         """
-        # Očisti datoteku na početku
-        with open('/home/mataci/Desktop/NSGA-II_antimicrobial_peptide_evolution/templateAlgorithm/FinalResults.txt', 'w') as file:
-            file.write('')  # Očisti sadržaj datoteke
+        with open('templateAlgorithm/results.txt', 'w') as file:
+            file.write('') 
         generation_number = 1
         template = self.template
         peptide_variable, population = self.generate_random_population(10, self.population_size, template)
@@ -138,8 +137,8 @@ class NSGA_II:
 
             population = self.fetch_fitness_function_values(population)
 
-            with open('/home/mataci/Desktop/NSGA-II_antimicrobial_peptide_evolution/templateAlgorithm/FinalResults.txt', 'a') as file:
-                file.write(f"Generacija: {generation_number}\n")  # Korištenje f-string za spajanje
+            with open('templateAlgorithm/results.txt', 'a') as file:
+                file.write(f"Generation: {generation_number}\n")  
                 for peptide in population:
                     file.write(f'{peptide.peptide_string}, {peptide.ff_amp_probability}, {peptide.ff_toxicity}\n')
                 file.write('\n')
@@ -420,39 +419,32 @@ class NSGA_II:
         offspring = []
         single_solutions_list = []
 
-        # Generate a predefined number of individuals.
         for _ in range(self.offspring_size):
             single_solutions_list.append(self.generate_single_solution(population, template))
 
-        # Dodavanje novih varijabilnih dijelova u peptide_variable array
         peptide_variable.extend(single_solutions_list)
 
-        # Pronađi indekse gdje su crtice '-' u templateu
+        # Find indices of variable positions in the template
         variable_positions = [i for i, char in enumerate(template) if char == '-']
 
-        # Generiranje potpunih peptida spajanjem templatea s novim varijabilnim dijelovima
         full_peptides = []
         full_peptides_list = []
         for solution in single_solutions_list:
             new_peptide = list(template)
             for i, pos in enumerate(variable_positions):
-                new_peptide[pos] = solution[i]  # Zamjena crtica varijabilnim dijelovima
+                new_peptide[pos] = solution[i] 
             full_peptides_list.append(new_peptide)
             full_peptides.append(''.join(new_peptide))
 
-        # Spremanje u datoteku
         with open('in.txt', 'w') as file:
             for peptide in full_peptides:
                 file.write(f'>{peptide}\n{peptide}\n')
 
-        # Dobivanje rezultata fitness funkcije
         toxicity = FitnessFunctionScraper.toxicity()
 
-        # Brisanje datoteke nakon obrade
         if os.path.exists('in.txt'):
             os.remove('in.txt')
 
-        # Kreiranje konačne populacije objekata
         for solution, full_peptide, (peptide_id, svm_score, prediction) in zip(full_peptides_list, full_peptides, toxicity):
             offspring.append(self.Peptide(solution, full_peptide, "", float(svm_score)))
 
@@ -489,10 +481,9 @@ class NSGA_II:
         first_parent = self.tournament_select_parent(population).peptide_list
         second_parent = self.tournament_select_parent(population).peptide_list
 
-        # Pronađi indekse gdje se nalaze crtice '-' u templateu
+        # Find indices of variable positions in the template
         variable_positions = [i for i, char in enumerate(template) if char == '-']
 
-        # Izvuci varijabilni dio iz oba parenta na temelju templatea
         first_variable_part = [first_parent[i] for i in variable_positions]
         second_variable_part = [second_parent[i] for i in variable_positions]
         
@@ -594,19 +585,15 @@ class NSGA_II:
                 )
                 break
 
-        # Pronađi indekse gdje se nalaze crtice '-' u templateu
         variable_positions = [i for i, char in enumerate(template) if char == '-']
 
-        # Funkcija za izdvajanje varijabilnog dijela iz peptida
         def extract_variable_part(peptide_sequence):
             return [peptide_sequence[i] for i in variable_positions]
 
-        # Kreiraj listu varijabilnih dijelova odabrane sljedeće generacije
         next_variable_parts = [
             extract_variable_part(peptide.peptide_string) for peptide in next_generation
         ]
 
-        # Ažuriraj peptide_variable tako da sadrži samo varijabilne dijelove odabranih jedinki
         peptide_variable[:] = next_variable_parts
 
         return next_generation

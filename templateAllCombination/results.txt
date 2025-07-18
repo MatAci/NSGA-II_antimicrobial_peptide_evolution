@@ -399,9 +399,3 @@ HKWHRYVIYW, 0.99, 1.25
 HKWHRYWIYW, 0.99, 0.95
 HKWHRYYIYW, 0.99, 1.01
 
-
-Peptide: HKWHRMPIYW, AMP Probability: 0.99, Toxicity: 2.01
-Peptide: HKWHRILIYW, AMP Probability: 0.99, Toxicity: 1.97
-Peptide: HKWHRTKIYW, AMP Probability: 0.99, Toxicity: 1.89
-Peptide: HKWHRIHIYW, AMP Probability: 0.99, Toxicity: 1.88
-Peptide: HKWHRFRIYW, AMP Probability: 0.99, Toxicity: 1.87

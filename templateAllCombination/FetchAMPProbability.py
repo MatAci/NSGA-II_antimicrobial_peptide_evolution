@@ -1,7 +1,14 @@
 import subprocess
 import numpy as np
+import os
 
 def fetchAMPProbability(peptides):
+
+    current_file_path = os.path.abspath(__file__)
+    parent_dir = os.path.dirname(current_file_path)     
+    grandparent_dir = os.path.dirname(parent_dir)   
+
+    sh_path = os.path.join(grandparent_dir, 'run_prediction.sh')
     
     #[['QC'],['YEW']]
     peptides = [[ ''.join(inner_list) ] for inner_list in peptides]
@@ -9,9 +16,10 @@ def fetchAMPProbability(peptides):
     flattened_args = [item[0] for item in peptides]
 
     args = ['amp'] + flattened_args
-    # Poziv shell skripte za dobivanje AMP vjerojatnosti
+
+    # Shell script for fetching AMP probability
     result = subprocess.run(
-        ['/home/mataci/Desktop/NSGA-II_antimicrobial_peptide_evolution/run_prediction.sh'] + args,
+        [sh_path] + args,
         capture_output=True,
         text=True)
 
